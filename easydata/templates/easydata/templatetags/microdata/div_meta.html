@@ -1,0 +1,16 @@
+{% load easydata_microdata %}
+
+<div itemscope itemtype="{{ tipo }}">
+{% for attr in atributos %}
+    <meta itemprop="{{ attr.nombre }}" content="{{ attr.valor }}" />
+{% endfor %}
+{% for relation in relaciones %}
+{% if relation.created %}
+<link itemprop="{{ relation.itemprop }}" href="{{ relation.href }}" />
+{% else %}
+<div itemtype="{{ relation.itemtype }}" itemscope itemprop="{{ relation.itemprop }}">
+    {% microdata_as_div_meta_interno relation.instance relation.data %}
+</div>
+{% endif %}
+{% endfor %}
+</div>

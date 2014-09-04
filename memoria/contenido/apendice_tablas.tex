@@ -1,0 +1,715 @@
+En este apartado se van a plasmar cada una de las tablas que se han desarrollado
+para el apartado de análisis de requisitos del proyecto.
+
+\section{Tablas de requisitos funcionales}
+
+A continuación se muestran cada una de las tablas donde se indican cada uno de
+los requisitos de funcionales que debe de implementar el proyecto.
+
+\subsection{Carga de modelos}
+
+%%%TABLA - Caso de uso 001
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-001 &  \bf Carga de modelos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-001 &  \bf Carga de modelos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Carga de modelos y fields del proyecto Django
+             donde se va a usar la aplicación.\\
+ \hline \bf Actores & Administrador del sistema\\
+ \hline \bf Precondición & Se ha configurado la aplicación en el proyecto
+             Django, la aplicación posee una base de datos y se han sincronizado
+             las modelos de la aplicación con la base de datos de la aplicación
+             para que se creen las tablas necesarias.\\
+ \hline \bf Postcondición & Se han cargado en las tablas de la base de datos
+             correspondiente a la aplicación los modelos y fields de estos.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El administrador accede a través de la línea de comandos
+                       de la terminal al path donde se encuentra el proyecto Django.
+                \item El administrador ejecuta el script que se encarga de
+                       cargar los modelos y fields existentes en la aplicación
+                       Django.
+                \item El sistema indica al administrador que los datos se han
+                       cargado correctamente.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[3.1] Existen modelos ya cargados en la base de datos, por
+                            lo que el sistema actualiza dichas tablas y añade
+                            las que no existan.
+                \item[3.2] La aplicación no tiene configurada una base de datos
+                            o sus modelos no están configurados correctamente.
+                            La aplicación aborta el procedimiento de carga de
+                            modelos y muestra mensaje de error.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso001} Caso de Uso - 001 - Carga de modelos} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Carga de espacios de nombres}
+
+%%%TABLA - Caso de uso 002
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-002 &  \bf Carga de espacios de nombres \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-002 &  \bf Carga de espacio de nombres \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Se debe de realizar una serie de procedimientos los
+             cuales permitan a la aplicación cargar la estructura de los
+             diferentes namespaces existentes, además de permitir actualizar y
+             eliminar estos.\\
+ \hline \bf Actores & Administrador del sistema\\
+ \hline \bf Precondición & Se ha configurado la aplicación en el proyecto
+             Django, la aplicación posee una base de datos y se han sincronizado
+             las modelos de la aplicación con la base de datos de la aplicación
+             para que se creen las tablas necesarias.\\
+ \hline \bf Postcondición & Se han cargado en las tablas de la base de datos
+             correspondientes a la aplicación las distintas entidades que
+             componen al namespaces y los atributos de cada una de estas
+             entidades.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El administrador sistema accede al listado de namespaces
+                       disponibles.
+                \item El sistema muestra el listado de namespaces existentes en
+                       la aplicación.
+                \item El administrador del sistema selecciona crear un nuevo
+                       namespace.
+                \item El sistema muestra al administrador un formulario para
+                       crear un nuevo namespace.
+                \item El administrador del sistema indica los datos del nuevo
+                       namespace, así como el fichero o la URL donde se
+                       encuentra la especificación de dicho namespace.
+                \item El sistema carga la especificación del namespace en la
+                       base de datos, y muestra por pantalla el resultado de la
+                       carga.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*.1] El administrador del sistema puede cancelar en
+                          cualquier momento el procedimiento de
+                          carga/actualización de los namespaces.
+                \item[*.2] El usuario no tiene permisos de superusuario.
+                \item[3.1] El usuario indica editar un namespace, para
+                          actualizar su nombre o actualizar la especificación
+                          mediante un fichero o URL.
+                \item[6.1] La URL o fichero especificado por el usuario no es
+                          correcta, y no se encuentra en ella una estructura de
+                          namespaces, o dichos datos no son correctos.
+                \item[6.2] Los nombres suministrados para el namespace ya están
+                          siendo usados. El sistema vuelve a solicitar un nombre
+                          correcto.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso002} Caso de Uso - 002 - Carga de espacios de nombres}
+\end{longtable}
+\end{center}
+
+
+\subsection{Mapeo de modelos}
+
+%%%TABLA - Caso de uso 003
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-003 &  \bf Mapeo de modelos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-003 &  \bf Mapeo de modelos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Este caso de uso describe el procedimiento mediante
+             el cual el administrador del sistema, describe en la aplicación la
+             relación de cada uno de los modelos del proyecto Django, con las
+             entidades de los distintos namespaces que existen en la
+             aplicación.\\
+ \hline \bf Actores & Administrador del sistema\\
+ \hline \bf Precondición & Se ha cargado en la aplicación los modelos y
+             atributos existentes en el proyecto, y además existe algún namespace
+             cargado en la aplicación, de forma que se dispongan entidades y
+             propiedades con el que mapear los modelos.\\
+ \hline \bf Postcondición & Uno o varios de los modelos del proyecto Django de
+             los cuales se quieren publicar sus datos, se encuentran
+             relacionados con una de las entidades de los namespaces
+             existentes.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El administrador del sistema accede al listado de
+                       modelos del sistema disponibles para mapear.
+                \item El sistema muestra el listado de modelos y dos selectores
+                       por cada uno de los modelos, donde se pueda elegir el
+                       namespace con el que se desea mapea y la entidad concreta
+                       con la que se desea realizar el mapeo.
+                \item El administrador del sistema introduce la configuración de
+                       aquello modelos que crea oportunos y salva los cambios
+                       realizados.
+                \item El sistema muestra un mensaje con el resultado del mapeo.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*.1] El administrador del sistema puede cancelar en
+                          cualquier momento la operación de mapeo de los modelos.
+                \item[*.2] El usuario no tiene permisos de superusuario.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso003} Caso de Uso - 003 - Mapeo de modelos} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Mapeo de los atributos}
+
+%%%TABLA - Caso de uso 004
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-004 &  \bf Mapeo de los atributos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-004 &  \bf Mapeo de los atributos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Este caso de uso describe el procedimiento mediante
+             el cual el administrador del sistema, describe en la aplicación la
+             relación de cada uno de los atributos de los modelos del proyecto
+             Django, con las propiedades de las entidades de los distintos
+             namespaces que existen en la aplicación.\\
+ \hline \bf Actores & Administrador del sistema\\
+ \hline \bf Precondición & Se ha cargado en la aplicación los modelos y
+             atributos existentes en el proyecto, además existe algún namespace
+             cargado en la aplicación, con el que mapear la relación con los
+             atributos y además, se ha realizado la correspondencia del modelo
+             con alguna entidad del namespace que deseamos configurar.\\
+ \hline \bf Postcondición & Alguno de los atributos del modelo del proyecto
+             Django que se ha configurado, ha sido relacionado con alguna de las
+             propiedades de la entidad con la que está relacionada el modelo.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El administrador del sistema accede al listado de
+                       modelos del sistema disponibles para mapear.
+                \item El sistema muestra el listado de modelos.
+                \item El administrador del sistema elige configurar los
+                       atributos de un determinado modelo que ya se encuentra
+                       mapeado con alguna entidad.
+                \item El sistema una pantalla con todos los atributos del modelo
+                       y dos selectores con los posibles namespaces y las
+                       propiedades disponibles del namespace seleccionado
+                       disponibles para mapear dicho atributo.
+                \item El administrador del sistema, introduce la configuración
+                       de aquellos atributos que desee y salva los cambios.
+                \item El sistema muestra un mensaje con el resultado del mapeo.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*.1] El administrador del sistema puede cancelar en
+                          cualquier momento la operación de mapeo de los
+                          atributos.
+                \item[*.2] El usuario no tiene permisos de superusuario.
+                \item[3] El modelo no se encuentra mapeado en el sistema, por lo
+                          que previamente deberá de realizar el mapeo del mismo
+                          antes de configurar el mapeo de sus atributos.
+                          \textbf{Include:} UC-003.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso004} Caso de Uso - 004 - Mapeo de los atributos} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Establecer visibilidad de modelos}
+
+%%%TABLA - Caso de uso 005
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-005 &  \bf Establecer visibilidad de modelos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-005 &  \bf Establecer visibilidad de modelos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Este caso de uso describe el procedimiento que debe
+             de seguir el administrador del sistema, para especificar aquellos
+             modelos del proyecto Django de los que podrán publicarse los datos.\\
+ \hline \bf Actores & Administrador del sistema\\
+ \hline \bf Precondición & Se ha configurado la aplicación en el proyecto
+             Django, la aplicación posee una base de datos y se han sincronizado
+             las modelos de la aplicación con la base de datos de la aplicación
+             para que se creen las tablas necesarias donde se almacenará la
+             estructura de los namespaces.\\
+ \hline \bf Postcondición & Se han marcado aquellos modelos que queremos que se
+             puedan mostrar sus datos y los que no queremos que se puedan
+             mostrar como visibles y no visibles, respectivamente.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El administrador del sistema accede al apartado de
+                       configuración de visibilidad de modelos.
+                \item El sistema muestra una lista con todos los modelos y
+                       fields de los mismos existentes en el proyecto Django.
+                \item El administrador del sistema marca como visibles o no
+                       visibles, los modelos y fields que desea que se puedan
+                       ver o no.
+                \item El administrador del sistema una vez ha terminado, salva
+                       los cambios en el sistema.
+                \item El sistema indica al administrador que los datos se han
+                       cargado correctamente.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*.1] El administrador del sistema puede cancelar en
+                          cualquier momento la operación de configuración de
+                          visibilidad de los modelos.
+                \item[*.2] El usuario no tiene permisos de superusuario.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso005} Caso de Uso - 005 - Establecer visibilidad de modelos} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Establecer visibilidad de los atributos}
+
+%%%TABLA - Caso de uso 006
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-006 &  \bf Establecer visibilidad de los atributos\\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-006 &  \bf Establecer visibilidad de los atributos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Este caso de uso describe el procedimiento que debe
+             de seguir el administrador del sistema, para especificar aquellos
+             atributos de los modelos del proyecto Django de los que podrán
+             publicarse los datos.\\
+ \hline \bf Actores & Administrador del sistema\\
+ \hline \bf Precondición & Se ha configurado la aplicación en el proyecto
+             Django, la aplicación posee una base de datos y se han sincronizado
+             las modelos de la aplicación con la base de datos de la aplicación
+             para que se creen las tablas necesarias donde se almacenará la
+             estructura de los namespaces.\\
+ \hline \bf Postcondición & Se han marcado aquellos atributos de los modelos
+             que queremos que se puedan mostrar sus datos y los que no queremos
+             que se puedan mostrar como visibles y no visibles, respectivamente.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El administrador del sistema accede al apartado de
+                       configuración de visibilidad de modelos.
+                \item El sistema muestra una lista con todos los modelos
+                       existentes en el proyecto Django.
+                \item El administrador del sistema selecciona en configuración
+                       de los atributos de un determinado modelo.
+                \item El sistema muestra al usuario la lista de atributos del
+                       modelo seleccionado.
+                \item El administrador del sistema marca como visibles o no
+                       visibles, los atributos de los modelos que desea que se
+                       puedan ver o no, respectivamente.
+                \item El administrador del sistema una vez ha terminado, salva
+                       los cambios en el sistema.
+                \item El sistema indica al administrador que los datos se han
+                       cargado correctamente.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*.1] El administrador del sistema puede cancelar en
+                          cualquier momento la operación de configuración de
+                          visibilidad de los modelos.
+                \item[*.2] El usuario no tiene permisos de superusuario.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso006} Caso de Uso - 006 - Establecer visibilidad \mbox{atributos}} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Publicación de los datos}
+
+%%%TABLA - Caso de uso 007
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-007 &  \bf Consulta de datos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-007 &  \bf Consulta de datos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Muestra los datos por pantalla usando alguno de los
+             estándares existente para la publicación de datos en internet.\\
+ \hline \bf Actores & Usuario externo\\
+ \hline \bf Precondición & Se ha configurado la aplicación en el proyecto
+             Django, la aplicación posee una base de datos y se han sincronizado
+             las modelos de la aplicación con la base de datos de la aplicación
+             para que se creen las tablas necesarias. Además se ha realizado el
+             mapeo el modelo junto con sus atributos que se desea visualizar y
+             también se ha configurado su visibilidad.\\
+ \hline \bf Postcondición & Se ha mostrado por pantalla usando el formato
+             deseado los datos referente a la instancia(s) del modelo
+             seleccionado.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El usuario externo accede a la URI correspondiente a la
+                       dirección dinámica existente para los datos que desea
+                       consultar.
+                \item El sistema muestra al usuario externo los datos del
+                       modelo o los modelos , haciendo uso del estándar y el
+                       namespace solicitado.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*] El usuario externo puede cancelar la operación en
+                          cualquier momento.
+                \item[2.1] El sistema muestra los datos de la instancia concreta
+                          en el formato solicitado.
+                \item[2.2] El sistema muestra los datos de la entidad concreta en
+                          el formato solicitado.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso007} Caso de Uso - 007 - Consulta de datos} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Inicio de sesión}
+
+%%%TABLA - Caso de uso 008
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-008 &  \bf Inicio de sesión \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-008 &  \bf Inicio de sesión \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Realiza el login del usuario dentro de la aplicación
+        web.\\
+ \hline \bf Actores & Usuario externo\\
+ \hline \bf Precondición & El usuario externo no se encuentra logueado en la
+        aplicación.\\
+ \hline \bf Postcondición & Se ha iniciado sesión en la aplicación y tiene
+            permisos de superusuario.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item El usuario externo accede a la dirección de inicio de
+                      sesión.
+                \item El sistema muestra al usuario externo un formulario donde
+                      se le solicita el usuario y contraseña.
+                \item El usuario introduce las credenciales.
+                \item El usuario y contraseña son válidos y el sistema redirige
+                      al usuario a la aplicación.
+             \end{enumerate}\\
+ \hline \bf Excepciones &
+             \begin{description}
+                \item[*] El usuario externo puede cancelar la operación en
+                          cualquier momento.
+                \item[4.1] El usuario o contraseña son incorrectos. Vuelve a
+                      solicitar las credenciales al usuario.
+                \item[4.2] El usuario no posee credenciales de superusuario.
+             \end{description}\\
+\hline
+\hline
+\caption{\label{tab:caso008} Caso de Uso - 008 - Inicio de sesión} 
+\end{longtable}
+\end{center}
+
+
+\subsection{Consulta con SPARQL}
+
+%%%TABLA - Caso de uso 009
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf UC-009 &  \bf Consulta con SPARQL \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf UC-009 &  \bf Consulta con SPARQL \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Debe de permitirse al usuario realizar consultas sobre
+        los datos utilizando el lenguaje SPARQL.\\
+ \hline \bf Actores & Usuario externo\\
+ \hline \bf Precondición & Los modelos y fields se han cargado en la aplicación.
+            Se han cargado también algún namespace. Se ha realizado el mapeo de
+            alguno de los modelos del proyecto.\\
+ \hline \bf Postcondición & Se devuelven aquellos datos que se corresponde con
+            la consulta SPARQL indicada.\\
+ \hline \bf Secuencia normal & 
+             \begin{enumerate}
+                \item Un usuario externo accede al apartado de consultas SPARQL
+                      e introduce una consulta.
+                \item El sistema devuelve al usuario el resultado de ejecutar la
+                      consulta sobre los datos almacenados en la base de datos y
+                      que cumplan las relaciones indicadas en la consulta.
+             \end{enumerate}\\
+ \hline \bf Excepciones & No existen excepciones para este caso de uso.\\
+\hline
+\hline
+\caption{\label{tab:caso009} Caso de Uso - 009 - Generación fichero D2Rq} 
+\end{longtable}
+\end{center}
+
+
+\section{Tablas de requisitos de información}
+
+A continuación se muestran cada una de las tablas donde se indican cada uno de
+los requisitos de información que posee el proyecto.
+
+%%%TABLA - Requisito Información de los namespaces
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf IRQ-001 &  \bf Información de los namespaces \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf IRQ-001 &  \bf Información de los namespaces \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Se debe almacenar la información acerca de los
+             distintos namespaces que almacena la aplicación, de tal forma que
+             se tenga la información acerca del namespace, de las entidades que
+             componen a este, y de las propiedades que componen a la entidad.\\
+ \hline \bf Dependencias & De este requisito de información depende que se
+                            pueda almacenar la información relativa a los
+                            distintos namespaces, realizar el posterior mapeo de
+                            los datos y finalmente la publicación de los mismos,
+                            usando dichos namespaces.\\
+ \hline \bf Datos específicos &
+             \begin{itemize} 
+                 \item Datos de la clase \textit{Namespace}:
+                 \begin{itemize}
+                    \item Nombre: nombre identificativo del namespace.
+                    \item url: es la dirección donde se encuentra la
+                                especificación del namespace.
+                    \item short\_name: nombre corto que se representará al
+                                       namespace en los ficheros rdf.
+                 \end{itemize}
+                 \item Datos de la clase \textit{Entidad}:
+                 \begin{itemize}
+                    \item nombre: es el nombre identificativo de la entidad.
+                    \item padres: indica si la entidad hereda de una entidad
+                                  padre, y en caso de ser cierto, indica cuáles son.
+                    \item namespace: indica el namespace al que pertenece dicha
+                                      entidad.
+                    \item descripción: descripción asociada a la entidad.
+                    \item etiqueta: etiqueta asociada a la entidad, la cual
+                        representa al elemento.
+                 \end{itemize}
+                 \item Datos de la clase \textit{Propiedad}:
+                 \begin{itemize}
+                    \item nombre: es el nombre identificativo de la propiedad.
+                    \item tipo: en caso de que el tipo de dato no sea simple,
+                          indica las entidades a las que hace referencia la
+                          propiedad.
+                    \item entidades: son las entidades a las que pertenece dicha
+                          propiedad.
+                    \item descripción: descripción asociada a la propiedad.
+                    \item etiqueta: etiqueta asociada a la propiedad, la cual
+                          representa a dicha característica.
+                    \item simple: indica si la propiedad es un tipo de dato
+                          simple o si por el contrario hace referencia a otra
+                          entidad.
+                    \item namespace: indica el namespace al que pertenece la
+                          propiedad.
+                 \end{itemize}
+             \end{itemize}\\
+\hline
+\hline
+\caption{\label{tab:irq001} IRQ - 001 - Información de los namespaces} 
+\end{longtable}
+\end{center}
+
+%%%TABLA - Requisito Información de los modelos
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf IRQ-002 &  \bf Información de los modelos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf IRQ-002 &  \bf Información de los modelos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Se debe almacenar la información acerca de los
+             distintos modelos que componen al proyecto Django, de tal forma que
+             se tenga la información acerca del modelo, y de los fields que
+             componen al modelo.\\
+ \hline \bf Dependencias & De este requisito de información, depende que se
+                            puedan almacenar la estructura de los modelos del
+                            proyecto Django donde se ha instalado la aplicación,
+                            su posterior mapeo con los distintos namespaces y su
+                            publicación final.\\
+ \hline \bf Datos específicos &
+             \begin{itemize} 
+                 \item Datos de la clase \textit{Modelo}:
+                 \begin{itemize}
+                    \item Nombre: nombre identificativo del Modelo dentro del
+                                   proyecto Django.
+                    \item aplicacion: es la aplicación dentro del proyecto
+                                       Django al que pertenece dicho modelo. Se
+                                       utiliza para poder localizarlo más
+                                       adelante, cuando se necesite captar sus
+                                       datos.
+                    \item Entidad: se trata de una relación muchos-muchos con
+                                    cada una de las entidades con las que se ha
+                                    configurado su mapeo.
+                    \item visibilidad: indica si este modelo es visible o no al
+                                        exterior.
+                 \end{itemize}
+                 \item Datos de la clase \textit{Field}:
+                 \begin{itemize}
+                    \item nombre: es el nombre identificativo del field dentro
+                                   del modelo.
+                    \item visibilidad: indica si este field es visible o no al
+                                        exterior.
+                    \item propiedad: es una relación muchos-muchos donde la
+                                      cual almacena el mapeo de dicho field con
+                                      las distintas propiedades.
+                    \item modelo: indica el modelo del proyecto Django al que
+                                   pertenece dicho field.
+                 \end{itemize}
+                 Esta estará diferenciada a su ver, mediante herencia en dos
+                 clases diferentes:
+                 \begin{itemize}
+                     \item \textbf{Atributo:} se encargará de representar a las
+                        relaciones existentes entre los distintos modelos. Posee
+                        los siguientes atributos:
+                     \begin{itemize}
+                         \item tipo de field: almacena el nombre del tipo de
+                         atributo al que representa.
+                     \end{itemize}
+                     \item \textbf{Relacion:} se encargará de representar a las
+                        relaciones existentes entre los distintos modelos. Posee
+                        los siguientes atributos:
+                     \begin{itemize}
+                         \item Tipo de relación: indica si la relación es 1:1,
+                            1:N o N:M.
+                         \item Modelo relacionado: indica el modelo al que hace
+                            referencia la relación.
+                         \item inversa: indica la relación inversa, es decir, la
+                            que posee la navegabilidad en el sentido contrario.
+                     \end{itemize}
+                 \end{itemize}
+             \end{itemize}\\
+\hline
+\hline
+\caption{\label{tab:irq002} IRQ - 002 - Información de los modelos} 
+\end{longtable}
+\end{center}

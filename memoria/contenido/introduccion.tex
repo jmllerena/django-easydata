@@ -1,0 +1,324 @@
+% ------------------------------------------------------------------------------
+% Este fichero es parte de la plantilla LaTeX para la realización de Proyectos
+% Final de Grado, protegido bajo los términos de la licencia GFDL.
+% Para más información, la licencia completa viene incluida en el
+% fichero fdl-1.3.tex
+
+% Copyright (C) 2012 SPI-FM. Universidad de Cádiz
+% ------------------------------------------------------------------------------
+
+A lo largo del siguiente documento, se describirán las motivaciones que han
+llevado a la realización del proyecto, así como los objetivos, estructura,
+requisitos y demás características técnicas, implementación y pruebas del mismo,
+además de los manuales necesarios para su utilización.
+
+Como punto inicial, en el presente capitulo se describen la motivaciones para la
+realización del proyecto, los objetivos y cómo se encuentra estructurada la
+documentación.
+
+\section{Motivación}
+
+Actualmente existe una gran cantidad de datos distribuidos por toda la red, pero
+éstos no se encuentran publicados ni organizados de forma que otros usuarios u
+organizaciones puedan hacer uso de ellos, o mejor dicho, de forma que otras
+aplicaciones externas puedan entenderlos. Especificando un formato común para
+publicar dicha información, se podrían obtener grandes cantidades de información
+en la web, a disposición de cualquier usuario u organización que la desease.
+
+Hoy en día muchos Gobiernos (OpenGovernment) están abriendo parte de sus datos
+en la Web, beneficiando así a multitud de usuarios, los cuales pueden captar
+estos datos y generar estadísticas, informes, estudios, generando transparencia
+en la gestión del gobierno. O como en el caso del comercio electrónico, si un
+comerciante abre sus datos en la Web, los buscadores pondrán enlazar mucho mejor
+sus productos, y ofrecer mejores resultados de búsqueda para su Web de comercio
+electrónico. Como conclusión, podemos decir que la apertura de datos, es
+beneficiosa en multitud de casos totalmente distintos, tanto como el marketing,
+investigación, gobierno, etc\ldots
+
+A raíz de todo esto, surgen multitud de vocabularios (ontologías) donde se
+definen una serie de entidades y propiedades de las mismas, con las cuales
+podemos relacionar nuestros datos. También existen multitud de estándares los
+cuales nos permiten realizar la publicación de los datos en un formato conocido.
+Por lo que, cuando vayamos a abrir nuestros datos podremos darle una estructura
+conocida por todos, de forma que aquella persona que vaya a hacer uso de ellos,
+pueda conocer a qué hacen referencia los mismos. De esta forma, conseguimos
+darle un significado semántico a los datos que estamos mostrando en nuestra web.
+Además, podremos definir relaciones entre los distintos datos, tanto los
+pertenecientes a nuestros proyectos como de otras fuentes externas, lo cual se
+conoce como LinkedData.
+
+\section{Descripción del sistema actual}
+
+En la actualidad, para el framework de desarrollo de aplicaciones web Django, no
+existen aplicaciones (o éstas ofrecen pocas funcionalidades o se encuentran
+obsoletas) que permitan realizar la apertura de datos de proyectos Django a
+través de un menú de configuración intuitivo, haciendo uso de cualquiera de las
+diferentes ontologías disponibles en internet para el marcado de los datos, como
+pueden ser por ejemplo:
+\begin{itemize}
+    \item \textbf{Schema \cite{schema}:} proporciona un vocabulario para
+        marcar los contenidos web, el cual es reconocido por los principales
+        buscadores, como son: Google, Bing, Yahoo o Yandex.
+    \item \textbf{FOAF \cite{foaf}:} acrónimo de Friend Of A Friend, define
+        una ontología para la publicación de relaciones entre personas y datos
+        en internet.
+    \item \textbf{Good relations \cite{GoodRelations}:} similar a los
+        anteriores, define un vocabulario específico para el comercio
+        electrónico. Dicho vocabulario, ya ha sido incluido en la especificación
+        de Schema.
+\end{itemize}
+
+Por otro lado, actualmente si que existen herramientas de este tipo realizadas
+para otros frameworks de desarrollo de aplicaciones Web, como puede ser el caso
+de una gema realizada para el framework Ruby on Rails, bajo el nombre de
+EasyData\footnote{El proyecto se encuentra alojado en el repositorio
+\url{https://github.com/jnillo/Linked_data}}, desarrollada también en la
+Universidad de Cádiz, que ha obtenido buenos resultados. Al igual que
+también conocidas aplicaciones de comercio electrónico realizadas en PHP, como
+puede ser Magento o Prestashop, también están siguiendo esta tendencia y se
+están adaptando al espacio de la Web semántica, vista las ventajas que ofrece.
+Por lo tanto, a raíz de la utilidad del mismo y que prueba de ello cada vez más
+tecnologías se están adaptando, sería interesante disponer de una herramienta de
+este tipo, en un framework como Django, que cada vez está más presente en el
+total de aplicaciones existentes en la Web.
+
+\section{Objetivos y alcance del proyecto}
+\label{sec:objetivos}
+
+El objetivo principal del presente proyecto es el de proporcionar al
+desarrollador de aplicaciones Django, una herramienta (conocida a partir de
+ahora como EasyData/Django) la cual le permita realizar la apertura
+\textbf{controlada} de los datos de su proyecto Django. Esto es el producto
+final que se obtendrá al finalizar dicho proyecto, pero este proyecto se puede
+desgranar en objetivos más específicos o subobjetivos, donde la unión de estos
+formen la totalidad del proyecto. Estos objetivos más específicos, se pueden
+dividir en tres, los cuales son:
+
+
+%%%TABLA - Objetivo 001
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf OBJ-001 &  \bf Resolver modelos de la aplicación \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf OBJ-001 &  \bf Resolver modelos de la aplicación \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Un primer objetivo será realizar una parte software,
+             que sea capaz mediante introspección, de obtener los distintos
+             modelos, junto con los fields y relaciones y los tipos de estos dos
+             últimos que componen el proyecto Django donde se encuentra
+             instalado nuestro proyecto. Esta estructura se almacenará, para
+             posteriormente poder realizar la configuración de cómo se va a
+             llevar a cabo la publicación de los datos.\\
+ \hline \bf Subobjetivos & 
+             \begin{itemize}
+                 \item Confeccionar una estructura de base de datos, que
+                        permita almacenar la estructura de modelos que forman el
+                        proyecto Django donde se encuentra nuestra aplicación.
+                 \item Desarrollar una porción de software, la cual sea capaz de
+                        obtener la estructura de los modelos del proyecto Django
+                        donde nos encontramos, y almacenar esta estructura en la
+                        base de datos confeccionada anteriormente.
+             \end{itemize}\\
+\hline
+\hline
+\caption{\label{tab:obj001} Objetivo - 001 - Resolver modelos de la aplicación} 
+\end{longtable}
+\end{center}
+
+
+%%%TABLA - Objetivo 002
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf OBJ-002 &  \bf Interfaz de configuración \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf OBJ-002 &  \bf Interfaz de configuración \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Un segundo objetivo consistirá en proporcionar al
+             usuario una aplicación Web de configuración, donde podrá detallar
+             cómo se va a realizar la apertura de datos de su proyecto. En este
+             apartado, el usuario deberá de indicar con qué entidades de los
+             vocabularios disponibles en la aplicación, se relacionan los
+             modelos de su proyecto, y con qué propiedades de dichas entidades,
+             se relacionan los atributos y relaciones de cada uno de los modelos.
+             Además se podrá especificar para cada uno de los modelos, cuales
+             serán visibles y cuales no (no todos los datos son susceptibles de
+             ser publicados, ya que todo proyecto puede contener datos sensibles
+             o que se encuentren protegidos por leyes de protección de datos).\\
+ \hline \bf Subobjetivos &
+             \begin{itemize}
+                 \item Proporcionar un apartado dentro del proyecto, donde el
+                        usuario sea capaz de cargar los diferentes vocabularios
+                        u ontologías que va a utilizar para la publicación de
+                        los datos.
+                 \item Proporcionar un apartado donde se listen los distintos
+                        modelos que componen al proyecto Django, de tal forma
+                        que para cada uno de los modelos, pudiésemos especificar
+                        con qué entidades de las propuestas por las distintas
+                        organizaciones se corresponden.
+                 \item Un apartado más dónde para cada modelo, se pudiera
+                        realizar la correspondencia (mapeo) de cada uno de los
+                        fields del modelo con las propiedades de la entidad
+                        asociada al modelo o cualquier otra disponible en el
+                        namespace.
+                 \item Un último apartado, donde para cada modelo y field o
+                        relación de nuestros modelos, podamos indicar si estos
+                        son visibles o no.
+             \end{itemize}\\
+\hline
+\hline
+\caption{\label{tab:obj002} Objetivo - 002 - Interfaz de configuración} 
+\end{longtable}
+\end{center}
+
+
+%%%TABLA - Objetivo 003
+%TODO: si se puede, desgranar también este apartado, cuando sepa mejor las posibles formas de mostrar los datos que se van a emplear.
+\begin{center}
+\begin{longtable}{||p{3.4cm}|p{12cm}||}
+%primera parte de la tabla
+ \hline \hline \bf OBJ-003 &  \bf Publicación de datos \\
+\hline
+\endfirsthead
+%primera parte de la tabla por pagina
+\hline \multicolumn{2}{|r|}{{Continuación de la tabla}} \\ \hline
+ \hline \bf OBJ-003 &  \bf Publicación de datos \\
+\hline
+\endhead
+% ultima parte de la tabla por pagina
+\hline \multicolumn{2}{|l|}{{Continúa en la siguiente página}} \\ \hline
+\endfoot
+% ultima parte de la tabla
+\endlastfoot
+% DATOS
+ \hline \bf Autor & José Manuel Llerena Carmona \\
+ \hline \bf Descripción & Un tercer y último objetivo sería el de proporcionar
+             al usuario, una serie de herramientas, las cuales le permitan
+             realizar la publicación de los datos de su proyecto. Estas le
+             permitirían al usuario utilizar los distintos tipos de notaciones
+             más comúnmente usados, como pueden ser RDF/XML, RDF/Turtle,
+             RDF/Ntriples, Microdata o RDFa.\\
+\hline
+\hline
+\caption{\label{tab:obj003} Objetivo - 003 - Publicación de datos} 
+\end{longtable}
+\end{center}
+
+
+Por lo tanto, como conclusión a todo lo comentado, el alcance del proyecto será
+el de proporcionar al usuario, una aplicación Django, que le permita realizar la
+apertura de los datos de forma controlada de sus proyectos Django en la Web.
+Para ello, la aplicación le proporcionará al usuario, la posibilidad de usar la
+mayor parte de los formatos permitidos en la Web semántica para la publicación
+de datos en internet. Así como también le permitirá la carga de las diferentes
+ontologías existentes en la web, de tal forma que la aplicación se adaptará a
+cualquier nuevo espacio de nombres que pueda surgir en un futuro.
+
+\newpage
+
+\section{Definiciones}
+
+\begin{description}
+    \item[Framework] \hfill \\
+        en el ámbito del desarrollo software, se entiende por framework a una
+        plataforma software para desarrollar aplicaciones, la cual sirve como
+        base para el desarrollo.
+    \item[Modelo] \hfill \\
+        es uno de los componentes del patron Modelo-Vista-Controlador. El modelo
+        se encarga de representar y gestionar toda la información con la que el
+        sistema trabaja.
+    \item[Vista] \hfill \\
+        es otro de los componentes del patron Modelo-Vista-Controlador. En el
+        caso de Django, la vista hace referencia al controlador, aunque exista
+        otro componente con el nombre de vista. Las vistas en Django se encarga
+        de responder a eventos y tratar la información realizando peticiones a
+        los modelos. Las vistas pueden utilizar las plantillas, para mostrar los
+        datos generados en ellas.
+    \item[Plantilla] \hfill \\
+        es otro de los componentes del patron Modelo-Vista-Controlador. En el
+        caso de Django, la plantilla hace referencia a la vista del patrón MVC.
+        La plantilla se encarga de presentar los datos en un formato adecuado
+        para la interacción.
+    \item[Ontología o Namespace] \hfill \\
+        dentro de la aplicación que se va a desarrollar, se conoce por ontología
+        o namespace, a cada uno de los vocabularios definidos que están
+        disponibles para que los usuarios realicen el marcado del contenido de
+        sus datos.
+    \item[Python] \hfill \\
+        \cite{python} es el lenguaje de programación que se va a utilizar para el desarrollo
+        del proyecto. Este lenguaje de programación es multiparadigma, ya que
+        permite la utilización de diferentes paradigmas de programación
+        (orientado a objetos, funcional o imperativa). Este lenguaje de
+        programación también se caracteriza por ser multiplataforma y de código
+        abierto. Para más información se puede consultar la web oficial de
+        \href{http://es.wikipedia.org/wiki/Python}{Python}.
+    \item[Django] \hfill \\
+        se trata de un framework de desarrollo web de código abierto, el cual se
+        utilizará para la realización del proyecto. Este framework está escrito
+        en el lenguaje de programación Python y está basado en el modelo MVC
+        (Modelo Vista Controlador).
+    \item[RDF] \hfill \\
+        \cite{rdfdoc} es el acrónimo de Resource Description Framework. Está diseñado por el
+        World Wide Web Consistorium como un modelo de datos para metadatos. Se
+        usa para la descripción conceptual y modelado de la información para
+        recursos web.
+    \item[RDFa] \hfill \\
+        es el acrónimo de Resource Description Framework in Attributes. Se trata
+        de una serie de extensiones para lenguajes HTML, XHTML y ciertos
+        documentos basados en XML recomendadas por W3C, de forma que se permita
+        dotar de contenido semático a los documentos web.
+    \item[Microdata] \hfill \\
+        es una especificación HTML de WHATWG (Web Hypertext Application
+        Technology Working Group), para enlazar metadatos al contenido existente
+        en páginas web.
+    \item[Web semántica] \hfill \\
+        es un conjunto de actividades promovidas por el W3C con la finalidad de
+        crear tecnologías que permitan la publicación de datos legibles por
+        aplicaciones informáticas.
+\end{description}
+
+\section{Organización del documento}
+
+Este documento tiene como finalidad, describir todo el proceso de desarrollo de
+la aplicación Django para la apertura de datos de proyectos y su posterior
+publicación, empezando por la descripción de los objetivos iniciales y
+requisitos esenciales que deberá reunir dicho proyecto. Se mostrará una
+planificación del desarrollo del proyecto, incluyendo costes estimados y
+diagramas de Gantt que ilustren el avance del proyecto en el tiempo.
+
+En este documento también se plasmará todo el ciclo de vida de desarrollo, desde
+la fase de análisis y diseño de los requisitos del proyecto, definiendo los
+distintos casos de usos, diagramas con la organización de los datos, actores
+implicados o diagramas de secuencia e interacción que pudieran resultar del
+mismo. Siguiendo por la implementación del mismo y las pruebas realizadas, las
+cuales verifiquen la calidad y robustez del mismo. Además, en este documento
+también se comentarán las posibles mejoras o ampliaciones futuras que pudieran
+considerarse.
+
+Por último, proporcionará al usuario tanto un manual de uso, como un manual de
+instalación y explotación del mismo, de tal forma que cualquier usuario sin
+conocimientos previos de la aplicación, pueda hacer uso de ella y sacarle el
+máximo partido posible.

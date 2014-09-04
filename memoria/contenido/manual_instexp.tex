@@ -1,0 +1,359 @@
+% ------------------------------------------------------------------------------
+% Este fichero es parte de la plantilla LaTeX para la realización de Proyectos
+% Final de Grado, protegido bajo los términos de la licencia GFDL.
+% Para más información, la licencia completa viene incluida en el
+% fichero fdl-1.3.tex
+
+% Copyright (C) 2012 SPI-FM. Universidad de Cádiz
+% ------------------------------------------------------------------------------
+
+A continuación, se detallan la instrucciones para la correcta instalación y
+explotación de la aplicación EasyData/Django para la apertura de datos en
+proyectos Django.
+
+% Las instrucciones de instalación y explotación del sistema se detallan a
+% continuación.
+
+\section{Introducción}
+
+El software EasyData/Django, ofrecerá al usuario que incorpore la aplicación a
+su proyecto facilidades a la hora de la publicación de los datos de su base de
+datos, pudiendo elegir únicamente aquellos que estime conveniente el usuario,
+haciendo uso de las diferentes ontologías disponibles en internet (como pueden
+ser, Schema, FOAF, etc.), y en diferentes formatos ampliamente utilizados (como
+pueden ser RDF, RDFa o microdata).
+
+De esta forma, las principales funcionalidades que ofrece el software al usuario
+son las siguientes:
+\begin{itemize}
+    \item Captación de los distintos modelos y fields de los mismos, de los que
+        se encuentra compuesto el proyecto Django donde se instale la aplicación
+        EasyData/Django.
+    \item Carga de diferentes namespaces en formato RDF disponibles en internet.
+    \item Configuración de los datos que serán visibles y aquellos que no se
+        considerarán privados y no se mostrarán al exterior.
+    \item Correspondencia de los modelos y fields del proyecto con los distintos
+        elementos de las ontologías que se hayan cargado en el proyecto.
+    \item Publicación de los datos en los diferentes formatos disponibles.
+\end{itemize}
+
+\section{Requisitos previos}
+
+Para el correcto funcionamiento de la aplicación EasyData/Django, los únicos
+requisitos hardware existentes son los propios de cualquier aplicación Python y
+proyecto Django.
+
+Por otro lado, en referencia a los requisitos software, como requisito base será
+necesario un sistema operativo el cual permita le ejecución de código Python y
+que cumpla con los requisitos software para la ejecución proyectos Django.
+Además, como requisitos específicos existen los siguientes:
+\begin{itemize}
+    \item Al tratarse de una aplicación para proyectos Django, será necesario
+        que el proyecto donde se vaya a incluir la aplicación EasyData/Django
+        funcione bajo una versión igual o superior a la 1.4 de Django.
+    \item Así mismo, también será necesario que se encuentre instalado el
+        paquete \textit{rdflib} de Python (a ser posible en su versión 4.0.1, ya
+        que no se ha probado para versiones anteriores y no se puede asegurar su
+        correcto funcionamiento), ya que esta aplicación hace uso de él para
+        ofrecer la mayoría de sus funcionalidades descritas anteriormente.
+    \item Además, para la generación de los gráficos mediante Graphviz de la
+        configuración de los modelos del proyecto, será necesario el paquete
+        pydot.
+\end{itemize}
+
+\section{Inventario de componentes}
+
+Junto con la aplicación EasyData/Django se incluyen los siguientes paquetes
+software necesarios para el correcto funcionamiento de la aplicación:
+\begin{itemize}
+    \item Framework jQuery en su versión 1.9.1.
+    \item Plugin jQuery-UI para el framework jQuery en su versión 1.10.3.
+    \item Framework CSS Bootstrap en su versión 3.0.0.
+\end{itemize}
+
+
+\section{Procedimientos de instalación}
+\label{sec:procinsta}
+
+A continuación se detallan cada uno de los pasos necesarios para la correcta
+instalación y explotación de la aplicación EasyData/Django dentro de un proyecto
+Django.
+
+Lo primero que hay que hacer es instalar los paquetes necesarios para que la
+aplicación EasyData/Django funcione dentro de nuestro sistema, por lo que
+deberemos de instalar/actualizar la versión de Django de nuestro sistema a una
+versión igual o superior a la 1.4 y asegurarnos que nuestro proyecto Django es
+compatible con esta versión. Lo primero podemos hacerlo mediante el comando pip:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> pip install django>=1.4
+\end{lstlisting}
+
+O bien, entrando en la web oficial de Django y descargando los ficheros fuente
+del repositorio de Django y siguiendo las instrucciones de instalación. Esto se
+encuentra correctamente explicado en la
+\href{https://www.djangoproject.com/download/}{documentación oficial} de Django.
+
+Para la instalación del paquete rdflib de Python, podremos proceder exactamente
+de la misma forma, instalando el mismo desde pip de la siguiente forma:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> pip install rdflib==4.0.1
+\end{lstlisting}
+
+O bien desde el repositorio oficial GIT del proyecto, el cual se puede encontrar
+en \href{https://github.com/RDFLib/rdflib}{GitHub} disponible para su descarga y
+perfectamente documentado.
+
+De igual forma, para la instalación del paquete pydot de Python, podemos hacerlo
+a través de la herramienta pip de la siguiente forma:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> pip install pydot
+\end{lstlisting}
+
+Para la instalación de los paquetes comentados anteriormente, también podemos
+hacer uso de la herramienta easy\_install, la cual es bastante similar a pip, de
+la siguiente forma:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> easy_install django
+$> easy_install rdflib
+$> easy_install pydot
+\end{lstlisting}
+
+Una vez hemos instalado los paquetes necesarios para la ejecución de la
+aplicación EasyData/Django, únicamente nos faltará descargar la aplicación
+EasyData/Django y copiar el contenido de la aplicación dentro de nuestro
+\textit{PYTHONPATH} o dentro del propio directorio del proyecto Django, junto
+con el resto de aplicaciones que componen a dicho proyecto Django.
+
+También existe la posibilidad de descargar la aplicación EasyData/Django desde
+el Python Package Index, como hemos hecho con las aplicaciones anteriores de las
+que hace uso el proyecto. Además, la aplicación EasyData/Django tiene
+especificados los requisitos necesarios para su ejecución, por lo que al
+instalarla desde el pip, el propio instalador se encargará de instalar las
+aplicaciones de las que depende, ahorrándonos los pasos anteriores. Para ello
+procederemos de igual forma que en los casos anteriores introduciendo uno de los
+siguientes comandos:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> easy_install django-easydata
+\end{lstlisting}
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> pip install django-easydata
+\end{lstlisting}
+
+Una vez tengamos la aplicación EasyData/Django, el siguiente paso será incluir
+dicha aplicación dentro del proyecto Django donde queremos hacer uso de la
+misma. Para ello, solo tendremos que añadir la aplicación en el settings.py de
+nuestro proyecto dentro de la variable \mbox{INSTALLED\_APPS}, quedando de la
+siguiente forma:
+
+\begin{lstlisting}[frame=L, language=Python, basicstyle=\footnotesize]
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'easydata',
+)
+\end{lstlisting}
+
+Cuando hayamos incluido la aplicación \textit{EasyData/Django} en nuestro
+proyecto Django, lo siguiente que deberemos hacer será sincronizar la base de
+datos, ya que la aplicación \textit{EasyData/Django} hace uso de sus propias
+tablas para almacenar la información respecto a los namespaces, modelos y fields
+existentes. Para ello, como debería de hacerse con cualquier aplicación,
+deberemos ejecutar el siguiente comando en el directorio donde se encuentre el
+manage.py de nuestro proyecto:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+$> python manage.py syncdb
+\end{lstlisting}
+ 
+El siguiente paso de la instalación de la aplicación EasyData/Django en nuestro
+proyecto Django, será añadir las urls propias de la aplicación a las urls de
+nuestro proyecto, de forma que el proyecto pueda servir dichas urls. Para
+realizar esto, añada la siguiente línea al fichero url.py de su proyecto:
+
+\begin{lstlisting}[frame=L, language=Python, basicstyle=\footnotesize]
+url(r'^easydata/', include('easydata.urls'))
+\end{lstlisting}
+
+El nombre asignado de easydata para la url es opcional, de tal forma que se
+puede modificar por otro que se adecue mejor a las necesidades del usuario.
+
+Como último paso, la aplicación EasyData/Django usa staticfiles para servir los
+ficheros estáticos de la aplicación, por lo que en nuestro proyecto deberá de
+estar soportado. Para cargar los ficheros estáticos de la aplicación en nuestro
+proyecto, se debe de lanzar el siguiente comando desde nuestro directorio del
+proyecto:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+python manage.py collectstatic
+\end{lstlisting}
+
+Para más información acerca de los ficheros estáticos y de cómo se sirven estos
+en un proyecto Django, visite la
+\href{https://docs.djangoproject.com/en/dev/howto/static-files/}{documentación oficial}.
+
+Por último, se informa al usuario que la aplicación EasyData/Django hace uso del
+sistema de usuarios y de roles de Django para el control de permisos a las
+vistas de configuración de la publicación de datos, restringiendo el acceso a
+todo aquel usuario que no posea los permisos de super usuario de Django. Por lo
+que si desea crear un usuario superusuario de Django, deberá hacerlo mediante el
+siguiente comando en la terminal:
+
+\begin{lstlisting}[frame=L, language=bash, basicstyle=\footnotesize]
+python manage.py createsuperuser
+\end{lstlisting}
+
+El asistente se encargará de solicitarle los datos necesarios para la creación
+del usuario. Si por otro lado, desea poder utilizar un usuario existente que no
+está marcado como superusuario, únicamente deberá marcar a True los campos
+\textit{is\_staff} y \textit{is\_superuser}.
+
+\subsection{Otras configuraciones}
+
+Con los pasos explicados anteriormente sería suficiente para que la aplicación
+pudiera funcionar correctamente, pero existen otros parámetros de configuración
+que pueden modificarse, para personalizar la misma a las necesidades del usuario.
+
+\subsubsection{Cabecera de URLs}
+\label{sec:cabeceraurl}
+
+La aplicación EasyData utiliza el framework Sites de Django para obtener la
+cabecera de las URLs (dominio), pero si el usuario lo desea, puede especificar
+una función alternativa para calcular las cabeceras. Para ello, deberá
+implementar una función propia que devuelva una cadena de texto con la cabecera
+de las URLs, bajo el nombre \textit{url\_header} y especificar en el settings de
+Django el módulo donde se encuentra dicha función mediante la variable
+\mbox{\textit{EASYDATA\_URL\_HEADER}}, de manera que EasyData sepa donde buscar
+dicha función.
+
+\subsubsection{URIs de modelos}
+
+Por otro lado, la aplicación EasyData de Django, genera una URI única para cada
+una de las instancias de los modelos del proyecto Django donde ha sido
+instalado, la cual hace referencia a el fichero RDF con los datos de dicha
+instancia con el mapeo configurado.
+
+En vez de usar la URI que hace referencia al fichero RDF con los datos de la
+instancia, al usuario le podría interesar que se utilizase otro tipo de URI para
+identificar a las instancias de un determinado modelo (como por ejemplo la URL
+donde de la web donde se lista la información de dicha instancia), por lo que
+existe la posibilidad de que el usuario especifique la URL para un determinado
+modelo implementando el método \textit{easydata\_generate\_url}, el cual
+devolverá el path absoluto (excepto la cabecera de la URL que utilizará la
+función explicada en \ref{sec:cabeceraurl}).
+
+\subsubsection{URIs para D2Rq}
+
+La aplicación EasyData/Django generará una URI por defecto para el fichero de
+configuración de D2Rq, aunque también será posible configurar esta URI para que
+utilice una especificada por el usuario. Para modificar la URI que utilizará la
+aplicación para D2Rq, se deberá crear en el modelo que se desee modificar la URI
+una variable de nombre \textit{easydata\_url\_d2rq} la cual sea de tipo string y
+contenga en el formato utilizado por D2Rq la plantilla que se utilizará para
+generar las URI del modelo.
+
+\subsubsection{Limitar ficheros RDF}
+
+La aplicación EasyData/Django por defecto limitará a un número máximo de 50
+instancias a la hora de exportar los datos de estas a través de RDF, de forma
+que se evite sobrecargar al servidor debido a modelos con grandes volúmenes de
+datos. De igual forma, este número máximo de instancias puede ser configurado
+por el usuario administrador, añadiendo en el fichero settings del proyecto la
+variable \textit{EASYDATA\_PUBLISH\_LIMIT}, el cual recibirá un número entero
+que hará referencia al número máximo de instancias a generar en los ficheros
+RDF.
+
+\subsubsection{Creación de nuevos template tags para RDFa y Microdata}
+
+A la hora de realizar la publicación de los datos en formato HTML, se utiliza en
+la aplicación los template tags creados para tal fin, donde cada uno de ellos
+utilizan diferentes etiquetas HTML para realizar la publicación. Puede que estas
+etiquetas no sean precisamente las que el usuario necesita para realizar la
+publicación, por ello, se ofrece al usuario la posibilidad de crear nuevos
+template tags que usen etiquetas HTML diferentes.
+
+Los template tags para publicar los datos, únicamente deben de devolver el
+resultado de invocar a las funciones \textit{generate\_html\_rdfa} y
+\textit{generate\_html\_microdata}, ubicadas en los ficheros easydata\_rdfa.py y
+easydata\_microdata.py respectivamente, del directorio templatetags del proyecto.
+Estas funciones tienen las siguientes cabeceras:
+
+\begin{lstlisting}[frame=L, language=Python, basicstyle=\footnotesize]
+generate_html_rdfa(instance, tag1, tag2, content)
+
+generate_html_microdata(instance, tag1, tag2, content)
+\end{lstlisting}
+
+Donde cada uno de los atributos que reciben las funciones hacen referencia a:
+\begin{itemize}
+    \item \textbf{instance}: es la instancia del modelo de la que se desea
+        generar el HTML con los datos.
+    \item \textbf{tag1}: es la etiqueta HTML que se desea usar para incluir la
+        información principal de la instancia.
+    \item \textbf{tag2}: es la etiqueta HTML que se desea usar para incluir cada
+        uno de los datos de la instancia.
+    \item \textbf{content}: recibe True o False, lo que indica que para mostrar
+        los datos se haga uso o no, del atributo content de las etiquetas.
+\end{itemize}
+
+
+
+\section{Procedimientos de operación y nivel de servicio}
+
+No existen procedimientos necesarios que deban de llevarse a cabo para asegurar
+el correcto funcionamiento de la aplicación, a excepción de los descritos
+anteriormente para la puesta en marcha del mismo. Si bien, como ocurre con
+cualquier proyecto software, se recomienda la realización periódica de back-ups,
+para prevenir la pérdida de datos, y en el caso de esta aplicación, la perdida
+de la configuración del mapeo de los modelos.
+
+Por otro lado, se advierte al usuario que se está trabajando con una aplicación
+para la publicación de datos de forma controlada de bases de datos de proyectos
+Django, lo cual significa, que debe de prestarse excesivo cuidado a la hora de
+indicar los datos que van a mostrarse públicamente, en referencia a los
+problemas que pudiesen acarrear la publicación de ciertos datos sensibles de a
+ser publicados. Esta responsabilidad recae únicamente sobre el usuario
+administrador de la aplicación, el cual deberá de prestar especial atención al
+apartado de visibilidad de los datos.
+
+
+\section{Pruebas de implantación}
+
+Una vez haya realizado todos los pasos descritos en el apartado
+\ref{sec:procinsta}, para comprobar que la aplicación ha sido instalada
+correctamente dentro de su proyecto Django, deberá de acceder a la siguiente
+url, donde se le mostrará una pantalla de bienvenida a la aplicación. Sino
+consigue acceder a la aplicación, revise los pasos descritos anteriormente.
+
+\begin{center}
+\textit{http://base\_url/easydata/}
+\end{center}
+
+Donde:
+\begin{itemize}
+    \item Deberá sustituir el protocolo http, por cualquier otro protocolo
+    diferente que utilice, como por ejemplo comunicación segura mediante SSL.
+    \item base\_url hace referencia a la dirección base de su proyecto. Si
+    ejecuta por defecto runserver de django, esta dirección sería 127.0.0.1:8000.
+    \item El nombre de easydata es el que hemos asignado en el paso anterior
+    del tutorial, si se hubiera asignado otro distinto, entonces este debería
+    modificarse por el nombre asignado en el fichero urls.py.
+\end{itemize}
+
+Suponiendo que estemos usando el protocolo http, con la dirección IP
+127.0.0.1:8000 y el nombre para la url indicado en la documentación, la
+dirección a la que deberíamos de acceder, sería la siguiente:
+
+\begin{center}
+\textit{http://127.0.0.1:8000/easydata/}
+\end{center}

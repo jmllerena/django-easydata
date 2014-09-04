@@ -1,0 +1,273 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block extrahead %}
+<script language="javascript" type="text/javascript">
+function asigna_evento_atributo(campo)
+{
+    $(campo).change(
+    function()
+    {
+        var numeroField = $(this).attr("id");
+        numeroField = numeroField.replace("id_atri-", "");
+        numeroField = numeroField.replace("-namespace", "");
+
+        //Eliminamos las opciones del select de entidad
+        $("#id_atri-" + numeroField + "-propiedad option").remove()
+        Opcion = document.createElement('option');
+        Opcion.value = "";
+        Opcion.appendChild(document.createTextNode("----------"));
+        $("#id_atri-" + numeroField + "-propiedad").append(Opcion);
+
+        if($(this).val() != "")
+        {
+            //Solicitamos por AJAX los Schemas del NameSpace
+            $.ajax(
+            {
+                url: '{% url "easydata.views.map.devuelve_propiedades_namespace" %}',
+                async: false,
+                data: "namespace=" + $(this).val(),
+                dataType: 'json',
+                success: function (json)
+                {
+                    if (json['return'])
+                    {
+                        array = json['lista'];
+                        for(i = 0; i < array.length; i++){
+                            opcion = $("<option>");
+                            opcion.attr({ "value" : array[i][0], "title" : array[i][2]});
+                            opcion.text(array[i][1]);
+                            $("#id_atri-" + numeroField + "-propiedad").append(opcion);
+                        }
+                    }
+                }
+            });
+        }
+        else
+        {
+            //Solicitamos por AJAX los Schemas del NameSpace
+            $.ajax(
+            {
+                url: '{% url "easydata.views.map.devuelve_propiedades_default" %}',
+                async: false,
+                data: "field=" + $("#id_atri-" + numeroField + "-id").val(),
+                dataType: 'json',
+                success: function (json)
+                {
+                    if (json['return'])
+                    {
+                        array = json['lista'];
+                        for(i = 0; i < array.length; i++){
+                            opcion = $("<option>");
+                            opcion.attr({ "value" : array[i][0], "title" : array[i][2]});
+                            opcion.text(array[i][1]);
+                            $("#id_atri-" + numeroField + "-propiedad").append(opcion);
+                        }
+                    }
+                }
+            });
+        }
+    })
+}
+
+
+function asigna_evento_relacion(campo)
+{
+    $(campo).change(
+    function()
+    {
+        var numeroField = $(this).attr("id");
+        numeroField = numeroField.replace("id_rel-", "");
+        numeroField = numeroField.replace("-namespace", "");
+
+        //Eliminamos las opciones del select de entidad
+        $("#id_rel-" + numeroField + "-propiedad option").remove()
+        Opcion = document.createElement('option');
+        Opcion.value = "";
+        Opcion.appendChild(document.createTextNode("----------"));
+        $("#id_rel-" + numeroField + "-propiedad").append(Opcion);
+
+        if($(this).val() != "")
+        {
+            //Solicitamos por AJAX los Schemas del NameSpace
+            $.ajax(
+            {
+                url: '{% url "easydata.views.map.devuelve_propiedades_namespace" %}',
+                async: false,
+                data: "namespace=" + $(this).val(),
+                dataType: 'json',
+                success: function (json)
+                {
+                    if (json['return'])
+                    {
+                        array = json['lista'];
+                        for(i = 0; i < array.length; i++){
+                            opcion = $("<option>");
+                            opcion.attr({ "value" : array[i][0], "title" : array[i][2]});
+                            opcion.text(array[i][1]);
+                            $("#id_rel-" + numeroField + "-propiedad").append(opcion);
+                        }
+                    }
+                }
+            });
+        }
+        else
+        {
+            //Solicitamos por AJAX los Schemas del NameSpace
+            $.ajax(
+            {
+                url: '{% url "easydata.views.map.devuelve_propiedades_default" %}',
+                async: false,
+                data: "field=" + $("#id_rel-" + numeroField + "-id").val(),
+                dataType: 'json',
+                success: function (json)
+                {
+                    if (json['return'])
+                    {
+                        array = json['lista'];
+                        for(i = 0; i < array.length; i++){
+                            opcion = $("<option>");
+                            opcion.attr({ "value" : array[i][0], "title" : array[i][2]});
+                            opcion.text(array[i][1]);
+                            $("#id_rel-" + numeroField + "-propiedad").append(opcion);
+                        }
+                    }
+                }
+            });
+        
+        }
+    })
+}
+
+function elimina_namespace(campo, relacion)
+{
+    if(relacion)
+        numeroField = campo.replace("#id_rel-", "");
+    else
+        numeroField = campo.replace("#id_atri-", "");
+
+    numeroField = numeroField.replace("-propiedad", "");
+
+    if($(campo).val() == "")
+    {
+        if(relacion){
+            $('#id_rel-' + numeroField + '-namespace option').removeAttr("selected");
+            $('#id_rel-' + numeroField + '-namespace option[value=""]').attr('selected', 'selected');
+        }
+        else{
+            $('#id_atri-' + numeroField + '-namespace option').removeAttr("selected");
+            $('#id_atri-' + numeroField + '-namespace option[value=""]').attr('selected', 'selected');
+        }
+    }
+}
+
+$(document).ready(function()
+{
+    //re for the select of namespaces
+    var expr1 = /^id_atri-\d+-namespace$/;
+    var expr2 = /^id_rel-\d+-namespace$/;
+    //re for select the properties
+    var expr3 = /^id_atri-\d+-propiedad$/;
+    var expr4 = /^id_rel-\d+-propiedad$/;
+
+    //get all the selects of the document
+    var selects = $("select");
+
+    //iterate over the selects
+    for(var i = 0; i < selects.length; i++)
+    {
+        //if validate the test
+        if(expr1.test(selects.eq(i).attr("id")))
+            asigna_evento_atributo("#" + selects.eq(i).attr("id")); //assing the event to the element
+        if(expr2.test(selects.eq(i).attr("id")))
+            asigna_evento_relacion("#" + selects.eq(i).attr("id")); //assing the event to the element
+        if(expr3.test(selects.eq(i).attr("id")))
+            elimina_namespace("#" + selects.eq(i).attr("id"), false);
+        if(expr4.test(selects.eq(i).attr("id")))
+            elimina_namespace("#" + selects.eq(i).attr("id"), true);
+    }
+});
+</script>
+{% endblock %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Map Fields" %} - {{ mod.nombre }}</h2>
+
+    <p>{% blocktrans %}As in the before section, here you are going to establish the correspondences, between your fields and the namespaces's properties loaded into the application.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}Below, you can see a form with one select field for each model field. The form's fields are differentiated by attributes and relations.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}The fields which are marked with an asterisk, means that these fields are declared as private. You can map the fields for future usages, but their information will not be published.{% endblocktrans %}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <h3>{% trans "Attributes" %}</h3>
+        
+        {{ formulario_atributos.management_form }}
+        <div class="form-group">
+        <table class="table table-condensed table-hover">
+        {% for form in  formulario_atributos %}
+            {{ form.id }}
+            <tr>
+                <th style="text-align: left;" width="12%"><label>{% if form.instance.visibilidad == 'P' %}*{% endif %}{{ form.instance.nombre }}</label></th>
+                <td width="12%">{{ form.namespace.errors }}{{ form.namespace }}</td>
+                <td width="26%">{{ form.propiedad.errors }}{{ form.propiedad }}</td>
+            </tr>
+        {% empty %}
+            <p>{% trans "There isn't any attribute field to map." %}</p>
+        {% endfor %}
+        </table>
+        </div>
+
+
+        <h3>{% trans "Relations" %}</h3>
+        
+        {{ formulario_relaciones.management_form }}
+        <div class="form-group">
+        <table class="table table-condensed table-hover">
+        {% for form in  formulario_relaciones %}
+            {{ form.id }}
+            <tr>
+                <th style="text-align: left;" width="12%"><label>{% if form.instance.visibilidad == 'P' %}*{% endif %}{{ form.instance.nombre }}</label></th>
+                <td width="12%">{{ form.namespace.errors }}{{ form.namespace }}</td>
+                <td width="26%">{{ form.propiedad.errors }}{{ form.propiedad }}</td>
+            </tr>
+        {% empty %}
+            <p>{% trans "There isn't any relation field to map." %}</p>
+        {% endfor %}
+        </table>
+        </div>
+        <div class="form-group">
+            <a type="submit" href="{% url "easydata.views.map.mapea_modelo" %}" class="btn btn-danger btn-sm">{% trans "Back" %}</a>
+            <button type="submit" class="btn btn-primary btn-sm">{% trans "Save changes" %}</button>
+        </div>
+    </form>
+{% endblock %}

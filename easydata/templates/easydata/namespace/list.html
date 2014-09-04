@@ -1,0 +1,63 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li class="active"><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+	<h2>{% trans "List of Namespaces" %}</h2>
+
+    <p>{% blocktrans %}Below you can see a full list with all your namespaces loaded into the application. In this section, you can add, edit or delete the namespaces. To add a new namespace, you have to provide the name, short name, and a file in the allowed formats with the specifications of the namespace. On the other hand, if you want to edit a namespace, you can change the name or short name, and optionaly update the namespace specification, providing a file with updated specification. Be careful before delete a namespace, because if you delete a namespace, all the configurations made using that namespace will be deleted and the changes can't be undone.{% endblocktrans %}</p>
+    
+    <table class="table table-condensed">
+    	<thead>
+    		<tr>
+    			<th>{% trans "Namespace Name" %}</th>
+    			<th>{% trans "Edit Namespace" %}</th>
+    			<th>{% trans "Delete Namespace" %}</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+	    {% for name in datos %}
+	    	<tr>
+	        	<th>{{name.namespace}}</th>
+	        	<td><a class="btn btn-primary btn-xs" href="{% url "easydata.views.namespace.editar_namespace" name.id %}">{% trans "Edit Namespace" %}</a></td>
+	        	<td><a class="btn btn-danger btn-xs" href="{% url "easydata.views.namespace.eliminar_namespace" name.id %}" onclick="return confirm('{% trans "Are you sure that you want to delete the namespace?" %}');">{% trans "Delete Namespace" %}</a></td>
+	        </tr>
+	    {% empty %}
+	    	<tr>
+	        	<td colspan="3">{% trans "Sorry, there are not nampesaces loaded" %}</td>
+	        </tr>
+	    {% endfor %}
+	    <tr>
+	    	<td colspan="3">
+	    		<a type="button" class="btn btn-primary btn-sm" href="{% url "easydata.views.namespace.vista_carga_namespace" %}">{% trans "New Namespace" %}</a>
+	    	</td>
+	    </tr>
+    	</tbody>
+    </table>
+{% endblock %}

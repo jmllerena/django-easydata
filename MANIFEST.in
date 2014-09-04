@@ -1,0 +1,9 @@
+include LICENSE
+include LICENSE_bootstrap
+include LICENSE_JQUERY
+include LICENSE_JQUERYUI
+include README.rst
+recursive-include docs *
+recursive-include easydata/static *
+recursive-include easydata/locale *
+recursive-include easydata/templates *

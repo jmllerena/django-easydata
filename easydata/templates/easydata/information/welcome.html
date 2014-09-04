@@ -1,0 +1,52 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li class="active"><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Welcome!" %}</h2>
+    <p>{% blocktrans %}Welcome to the Django app, called EasyData/Django, which offers you a lot of possibilities to publish the data of your Django sites.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}In this application, you could load multiple Namespaces (ontologies or vocabularies), that are defined using the rdf:Class, rdf:Property, owl:Class, owl:ObjectProperty, owl:DatatypeProperty and owl:AnnotationProperty tags, and after, you can construct the correspondence (mapping) among your models and these namespaces. By this way, the application could publish the data of your Django site, using this ontologies, in order that this data will be published and understandable by anyone.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}The application also permits to the user, customize the visibility of the data, offering confidentiality to the sensible or important data that shouldn't be published.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}When the application had been configured, you could publish you data, in many different ways and formats, like RDF/XML, RDF/Ntriples, RDF/Turtle, Microdata or RDFa.{% endblocktrans %}</p>
+
+    <h2>{% trans "Introduction" %}</h2>
+
+    <p>{% blocktrans %}The first thing that you have to do, when you have installed EasyData/Django into your Django project, is to synchronize the models with the data base, in order to create the new tables that will store the data about models and namespaces. After this, you could run the loadmodels procedure through the manage.py file of your project, to discover the Django project's models and fields of all your applications. You can run the loadmodels procedure in a console on the path of your Django project, with the following command:{% endblocktrans %}</p>
+
+    <pre>python manage.py loadmodels</pre>
+
+    <p>{% blocktrans %}The next step will be the access to the web application, more specifically to the "Namespace" section, where the application shows all the namespaces loaded, and where you can add additional namespaces using RDF files with the specification. Initially, there will be not namespaces, so it will be the first task that you must to do. To add a new namespace, you have to push on the "New Namespace" button, and the application will show you a form, where you have to introduce the namespace's name and short name, and a file or uri with the namespace specification in one of the formats allowed.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}When you have added at least one namespace, you must set the visibility of models and fields in the "Visibility" section, in order to avoid that certain data that shouldn't be published, can be published.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}The last step, will be to configure the mapping among the models and entities, and fields and properties, that you have loaded into the application. You can do this on the "Mapping" section. When you have mapped a model with a entity, will appear the "Map fields" button, where you can map the model's fields with the properties of the entities.{% endblocktrans %}</p>
+{% endblock %}

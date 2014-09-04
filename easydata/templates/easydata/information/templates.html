@@ -1,0 +1,138 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Use in Django templates" %}</h2>
+
+    <p>{% blocktrans %}Using the URLs provided in the previous sections, the users can access to your information in RDF/XML, RDF/Ntriples and RDF/Turtle formats, but another way to publish your data, is including it into your html templates, using special tags that indicates the entities or properties, which represents your data.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}The two available formats to do this, are microdata and rdfa. The EasyData/Django application, offers you multiple Django template tags, that can do this job easier for you. These template tags are differentiated by microdata and rdfa, and you only have to load the template tags in your Django templates using the following code:{% endblocktrans %}</p>
+
+    <pre>{&#37 load easydata_microdata &#37}</pre>
+
+    <pre>{&#37 load easydata_rdfa &#37}</pre>
+
+    <p>{% blocktrans %}When you have loaded the template tags libraries, you can use the template tags to generate the html with the data of a instance and the tags which are mapped the model. The available template tags are the following:{% endblocktrans %}</p>
+
+    <h3>Microdata</h3>
+
+    <p>{% trans "To publish all the data of a model instance in Microdata format, you have the following template tags:" %}</p>
+
+    <pre>{&#37 microdata_ul instance &#37}
+{&#37 microdata_div_meta instance &#37}
+{&#37 microdata_div_span instance &#37}</pre>
+
+    <p>{% trans "To publish data of a concrete field of the model instance you have the following template tags:" %}</p>
+
+    <pre>{&#37 microdata_li_field instance "field_name" &#37}
+{&#37 microdata_meta_field instance "field_name" &#37}
+{&#37 microdata_span_field instance "field_name" &#37}</pre>
+
+    <p>{% blocktrans %}If you are going to publish a concrete field or fields of a model instance using microdata, you also have to use a specific template tag to include a html open tag with the instance information.{% endblocktrans %}</p>
+
+    <pre>{&#37 microdata_open_tag "tag_name" &#37}</pre>
+
+    <h4>{% trans "Example" %}</h4>    
+
+    <p>{% blocktrans with nombre_model=example_model.nombre %}An example of the usage of the template tags showed before, if you want to publish in an unordered list, all the visible fields of a concrete instance of the model {{ nombre_model }} stored in a variable called var1, you have to put the following template tag in your Django template:{% endblocktrans %}</p>
+
+    <pre>{&#37 microdata_ul var1 &#37}</pre>
+
+    {% if microdata_code %}
+    <p>{% blocktrans %}The output that will generate the last tag, is the following:{% endblocktrans %}</p>
+
+    <pre>{{ microdata_code }}</pre>
+    {% endif %}
+
+    <p>{% blocktrans with nombre_field=field.nombre %}On the other hand, if you want to publish only one field of the var1 instance, like the <strong>{{ nombre_field }}</strong> field, you have to do the following:{% endblocktrans %}</p>
+
+    <pre>{&#37 microdata_li_field var1 "{{ field.nombre }}" &#37}</pre>
+
+    <h3>RDFa</h3>
+
+    <p>{% trans "To publish all the data of a model instance in RDFa format, you have the following template tags:" %}</p>
+
+    <pre>{&#37 rdfa_ul instance &#37}
+{&#37 rdfa_div instance &#37}
+{&#37 rdfa_div_span instance &#37}</pre>
+
+    <p>{% trans "To publish data of a concrete field of the model instance you have the following template tags:" %}</p>
+
+    <pre>{&#37 rdfa_li_field instance "field_name" &#37}
+{&#37 rdfa_div_field instance "field_name" &#37}
+{&#37 rdfa_span_field instance "field_name" &#37}</pre>
+
+    <p>{% blocktrans %}If you are going to publish a concrete field or fields of a model instance using rdfa, you also have to use a specific template tag to include a html open tag with the instance information.{% endblocktrans %}</p>
+
+    <pre>{&#37 rdfa_open_tag "tag_name" &#37}</pre>
+
+    <h4>{% trans "Example" %}</h4>    
+
+    <p>{% blocktrans with nombre_model=example_model.nombre %}An example of the usage of the template tags showed before, if you want to publish in an unordered list, all the visible fields of a concrete instance of the model {{ nombre_model }} stored in a variable called var1, you have to put the following template tag in your Django template:{% endblocktrans %}</p>
+
+    <pre>{&#37 rdfa_div var1 &#37}</pre>
+
+    {% if rdfa_code %}
+    <p>{% blocktrans %}The output that will generate the last tag, is the following:{% endblocktrans %}</p>
+
+    <pre>{{ rdfa_code }}</pre>
+    {% endif %}
+
+    <p>{% blocktrans with nombre_field=field.nombre %}On the other hand, if you want to publish only one field of the var1 instance, like the <strong>{{ nombre_field }}</strong> field, you have to do the following:{% endblocktrans %}</p>
+
+    <pre>{&#37 rdfa_div_field var1 "{{ field.nombre }}" &#37}</pre>
+
+    <h2>{% trans "templates's directories" %}</h2>
+
+    <p>{% blocktrans %}Bellow you can see a list with all the directories where Django will search the templates, this means, that these are the directories where are located all the templates where you can use the template tags. The directories are the following:{% endblocktrans %}</p>
+
+    {% if list_dirs %}
+    <ul>
+    {% for dir in list_dirs %}
+        <li>{{ dir }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>{% trans "There isn't any template directory." %}</p>
+    {% endif %}
+    
+    <p>{% blocktrans %}The templates also can be stored in the application directories, always on the folder called templates, and in the subfolder with the same name of the application. The paths of each application installed in the Django project are:{% endblocktrans %}</p>
+
+    {% if apps_dirs %}
+    <ul>
+    {% for dir in apps_dirs %}
+        <li>{{ dir }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>{% trans "There isn't any application directory." %}</p>
+    {% endif %}
+
+{% endblock %}

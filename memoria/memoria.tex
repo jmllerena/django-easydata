@@ -1,0 +1,140 @@
+% ------------------------------------------------------------------------------
+% Este fichero es parte de la plantilla LaTeX para la realización de Proyectos
+% Final de Grado, protegido bajo los términos de la licencia GFDL.
+% Para más información, la licencia completa viene incluida en el
+% fichero fdl-1.3.tex
+
+% Copyright (C) 2012 SPI-FM. Universidad de Cádiz
+% ------------------------------------------------------------------------------
+
+\documentclass[a4paper,11pt]{book}
+
+% PAQUETES
+\usepackage{./estilo/paquetes}
+\usepackage{./estilo/colores}
+\usepackage{./estilo/comandos}
+
+
+%Para la indentación al principio de cada párrafo
+\setlength{\parindent}{20pt}
+\setlength{\parskip}{\baselineskip}
+
+% Ruta al directorio de imágenes
+\graphicspath{{./img/}} 
+
+% METADATOS
+\title{APERTURA DE DATOS EN APLICACIONES DJANGO}
+\author{Iván Ruíz Rube y Juan Manuel Dodero Beardo}
+\date{Noviembre 2012}
+
+% Estilo de las citas en latex
+\hypersetup{
+    citecolor=blue,        % color of links to bibliography
+}
+
+\begin{document}
+
+%Para añadir la bibliografía sin necesidad de ser citada
+\nocite{*}
+
+%Si ponemos esto, elimina los numeros de pagina y todos los estilos
+%\pagestyle{empty}
+
+% PORTADAS
+\input{./portadas/portada-inicial}
+\cleardoublepage
+
+\input{./portadas/portada-secundaria}
+\cleardoublepage
+
+% PRELIMINARES
+\input{contenido/agradecimientos}
+\newpage
+
+\input{contenido/resumen}
+\newpage
+
+
+\frontmatter
+
+% INDICES
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+% PROLEGÓMENO
+\part{Prolegómeno}
+%\null\vfill
+%\noindent La primera parte de la memoria del PFC debe contener una introducción y una planificación del proyecto.\\
+
+%La introducción es un capítulo que, a modo de resumen, debe contener una breve descripción del contexto de la disciplina en la que el proyecto tiene aplicación, la motivación para su desarrollo, una explicación de la situación actual previa al proyecto y de otros sistemas existentes, en su caso, y la problemática existente que se pretende solucionar. Al final del capítulo introductorio se deben enunciar claramente los objetivos y el alcance del proyecto.\\
+
+%El segundo capítulo debe incluir una planificación del proyecto. La planificación deberá ajustarse a las prácticas de ingeniería en general, y de la ingeniería del software en particular. Deberá tener en cuenta los plazos, los entregables (documentos y software), los recursos (humanos y de equipamiento inventariable) y el método de ingeniería de software a emplear.
+%\\
+
+\chapter{Introducción}
+\input{./contenido/introduccion}
+
+\chapter{Planificación}
+\input{./contenido/planificacion}
+
+% DESARROLLO
+\part{Desarrollo}
+%\null\vfill
+%\noindent En esta parte se debe describir el desarrollo del proyecto siguiendo la metodología empleada. Sus capítulos no deben ser una descripción exhaustiva de todos los documentos, diagramas, código fuente y, en general, entregables generados, sino más bien una explicación resumida del desarrollo, estructurada según las etapas principales del proceso de ingeniería. Deben seleccionarse aquellos diagramas, fragmentos de código y secciones de los entregables que sean más significativos para dicha explicación. La totalidad de los entregables resultado del proyecto se ubicarán en los anexos y/o en el material en CD/DVD que acompañe al proyecto.
+
+
+\chapter{Análisis de Requisitos}
+\input{./contenido/analisis}
+
+\chapter{Diseño del Sistema}
+\input{./contenido/diseno}
+
+\chapter{Implementación del Sistema}
+\input{./contenido/implementacion}
+
+\chapter{Pruebas del Sistema}
+\input{./contenido/pruebas}
+
+% EPILOGO
+\part{Epílogo}
+%\null\vfill
+%\noindent En esta última parte quedarán recogidas las conclusiones y los manuales necesarios para el manejo de la aplicación resultado del desarrollo. Si se ha realizado algún tipo de evaluación de la solución proporcionada, más allá de las pruebas del sistema, también deberá venir recogida en un capítulo separado dentro de esta parte. Pueden consultarse diversos tipos de evaluaciones sobre sistemas de información en \cite{hevner2004}: casos de estudio, análisis estático, análisis dinámico, simulación, experimento controlado, etc.
+%\vfill
+
+\chapter{Manual de instalación y explotación}
+\label{chap:maninsexp}
+\input{./contenido/manual_instexp}
+
+\chapter{Manual de usuario}
+\input{./contenido/manual_usuario}
+
+\chapter{Conclusiones}
+\input{./contenido/conclusiones}
+
+% Apéndice
+\appendix
+\chapter{Tablas del apartado de análisis}
+\input{./contenido/apendice_tablas}
+
+\chapter*{\bibname}
+\addcontentsline{toc}{chapter}{\bibname}
+\renewcommand{\bibname}{}
+
+\input{./contenido/bibliografia}
+
+\begingroup
+  \def\chapter*#1{}
+\renewcommand{\bibname}{}
+% Bibliografía con BibTeX
+\bibliographystyle{amsalpha}
+\bibliography{bibliografia}
+
+\backmatter
+
+\input{./anexos/general}
+\input{./anexos/fdl-1.3}
+
+\end{document}

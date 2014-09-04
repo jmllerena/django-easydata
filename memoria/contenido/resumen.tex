@@ -1,0 +1,70 @@
+% ------------------------------------------------------------------------------
+% Este fichero es parte de la plantilla LaTeX para la realización de Proyectos
+% Final de Grado, protegido bajo los términos de la licencia GFDL.
+% Para más información, la licencia completa viene incluida en el
+% fichero fdl-1.3.tex
+
+% Copyright (C) 2012 SPI-FM. Universidad de Cádiz
+% ------------------------------------------------------------------------------
+
+\thispagestyle{empty}
+
+\noindent \textbf{\begin{Large}Resumen\end{Large}} 
+\newline
+\newline
+\noindent Hoy en día es mucha la información que circula a través de internet, y
+aunque la gran mayoría sea comprensible por el ser humano, las máquinas no
+disponen de la capacidad de razonamiento necesario para comprender en muchos de
+los casos de qué trata dicha información o con qué está relacionada. De esta
+forma, mediante el marcado de nuestros datos haciendo uso de vocabularios
+específicos, podemos dotar a nuestro contenido web de un mayor valor semántico
+(web semántica), de tal forma que estemos indicando explícitamente qué es la
+información que estamos publicando.
+
+\noindent En el presente proyecto titulado Apertura de datos en aplicaciones
+Django, se ha desarrollado una herramienta para el framework de desarrollo web
+Django, el cual se encuentra desarrollado bajo el lenguaje de programación
+Python. Esta herramienta o plugin, se encargará de facilitar al usuario la
+publicación controlada de los datos de sus proyectos Django en internet,
+haciendo uso de los vocabularios u ontologías disponibles en internet para tal
+finalidad.
+
+\noindent En la web están disponibles multitud de ontologías disponibles para
+los usuarios que deseen hacer uso de ellas. Cada una de ellas relacionadas con
+una temática diferente o con muchas temáticas a la vez, como por ejemplo puede
+ser, la música, la ingeniería, el cine, electrónica, etc\ldots
+
+\noindent A día de hoy, multitud de organizaciones, tanto públicas como privadas,
+usuarios y software están adaptando sus productos a la web semántica para la
+apertura de sus datos. Un ejemplo bastante claro es el Open Government (o
+gobierno abierto), donde se defiende que los temas del Gobierno y
+Administración Pública se abran a los ciudadanos, de tal forma que se transmita
+transparencia en sus gestiones. También en el ámbito del comercio, aplicaciones
+bastante populares de comercio electrónico, están adaptando o han adaptado sus
+aplicaciones para la publicación de sus datos, confiriendo de esta forma una
+mayor proyección de los productos.
+
+\noindent A raíz de todo esto comentado, surge la idea de realizar una
+herramienta para un framework de desarrollo web cada vez más usado, que permita
+adaptar los proyectos existentes a la publicación de datos, sin necesidad de
+redesarrollar los proyectos por completo.
+
+\noindent Por lo tanto, la herramienta que se ha desarrollado en el presente
+proyecto, permitirá a partir de sus datos realizar un etiquetado de los mismos
+para luego publicar estos en internet. Para desarrollar esto, la presente
+herramienta ofrece al usuario las siguientes funcionalidades:
+\begin{itemize}
+    \item Captación de los datos de los que está compuesto nuestro proyecto
+        Django.
+    \item Carga de espacios de nombres y ontologías definidas en la web que
+        sirvan para el propósito de los datos que se desean publicar.
+    \item Posibilidad de elegir qué datos van a ser publicados y cuales no lo
+        serán.
+    \item Componente para la interrelación de los espacios de nombres y los datos de nuestro proyecto.
+    \item Componente para la publicación de nuestros datos en diferentes
+        formatos existentes.
+\end{itemize}
+
+\noindent {\bf Palabras clave:} OpenData, LinkedData, RDF, RDFa, Microdata,
+ontología, namespace, \mbox{RDF/Ntriples}, RDF/Turtle, XML, Django, Python, SPARQL,
+D2Rq.

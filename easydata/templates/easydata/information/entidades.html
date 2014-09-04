@@ -1,0 +1,69 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Related Entities" %}</h2>
+
+    <p>{% blocktrans %}Below you can see, a full list with all the entities that you have loaded into the EasyData/Django application and that you have mapped with any of your application's models. Also shows the URLs through you can access to the information about the models mapped with those entities.{% endblocktrans %}</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "Entity" %}</th>
+                <th>{% trans "Namespace" %}</th>
+                <th>{% trans "URL" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ent in entidades %}
+            <tr>
+                <td>{{ ent.nombre }}</td>
+                <td>{{ ent.namespace }}</td>
+                <td>{{ ent.get_publish_url }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">{% trans "There isn't any entity mapped with a model." %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>{% trans "Example" %}</h2>
+
+    {% if example_entity %}
+        <p>{% blocktrans with nombre_entity=example_entity.nombre %}Using the URLs provided before, if you would like to get all the information about the models that are related with the entity called {{ nombre_entity }} in RDF/XML format, you will have to access to the following url:{% endblocktrans %}</p>
+        <pre><a href="{% url 'easydata.views.publish.publish_type' example_entity.namespace.short_name example_entity.nombre 'xml' %}" target="_blank">{% url 'easydata.views.publish.publish_type' example_entity.namespace.short_name example_entity.nombre 'xml' %}</a></pre>
+    {% else %}
+        <p>{% blocktrans %}There aren't entities related with models, and it's impossible show an example with real data. We will suppose that we have related models with an entity called Transport. The URL that we will have to access the get all the information about Transports in format RDF/Turtle is:{% endblocktrans %}</p>
+        <pre>easydata/publish/type/Transport.ttl</pre>
+    {% endif %}
+
+{% endblock %}

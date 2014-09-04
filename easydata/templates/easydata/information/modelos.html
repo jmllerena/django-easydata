@@ -1,0 +1,75 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Configured Models" %}</h2>
+    <p>{% blocktrans %}Below you can see a list of models which are available to use in your templates, or you can publish their associated URLs, to share their information. With the available models, appears information about the URLs assigned.{% endblocktrans %}</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{% trans "Model" %}</th>
+                <th>{% trans "Entity Mapped" %}</th>
+                <th>{% trans "Single URL" %}</th>
+                <th>{% trans "Full URL" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mod in modelos %}
+            <tr title="{% trans "Mapped attributes:"%} {{ mod.atributos }} - {% trans "Mapped relations:"%} {{ mod.relaciones }}">
+                <td>{{ mod.modelo.nombre }}</td>
+                <td>{{ mod.modelo.entidad }}</td>
+                <td>{{ mod.modelo.generate_url_without_instance }}</td>
+                <td>{{ mod.modelo.generate_full_url }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">{% trans "There isn't any model full configured" %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p>{% blocktrans %}The word "pk" in bold in the Single URLs, represent the primary key of each entity of the model. You have to replace it by the entity's primary key that you want to publish the data.{% endblocktrans %}</p>
+
+    <h2>{% trans "Example" %}</h2>
+
+    <p>{% blocktrans %}This section shows an example of how can you use the URLs showed before, to access to the model's information of a concrete model instance.{% endblocktrans %}</p>
+
+    {% if example_model %}
+        <p>{% blocktrans with nombre_model=example_model.nombre nombre_entidad=example_model.entidad primary=elem.pk %}You have mapped the model {{ nombre_model }} with the entity {{ nombre_entidad }}. This model has an instance with the primary key "{{ primary }}", and the url by which we can access to the information of this model instance is:{% endblocktrans %}</p>
+        <pre><a href="{{ url }}" target="_blank">{{ url }}</a></pre>
+        <p>{% blocktrans %}A valid url to access to the information of all instances of the model, for example in RDF/Ntriples format is:{% endblocktrans %}</p>
+        <pre><a href="/easydata/publish/model/{{ example_model.aplicacion }}/{{ example_model.entidad.nombre }}-{{ example_model.nombre }}.nt" target="_blank">easydata/publish/model/{{ example_model.aplicacion }}/{{ example_model.entidad.nombre }}-{{ example_model.nombre }}.nt</a></pre>
+    {% else %}
+        <p>{% blocktrans %}You don't have any model mapped with an entity, the models don't have data or the models are not visible, and is impossible to show you an example with real data. We suppose that exist a model called People, with an instance of People with the primary key "1", and this model is mapped with the entity Person. The url to access to the information of the People with the primary key "1" is:{% endblocktrans %}</p>
+        <pre>/easydata/publish/instance/aplicacion/Person-People/1.xml</pre>
+    {% endif %}
+{% endblock %}

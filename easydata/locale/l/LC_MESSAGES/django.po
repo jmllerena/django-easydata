@@ -1,0 +1,883 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-22 20:57+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms/modelforms/editnamespace.py:51 forms/modelforms/newnamespace.py:56
+msgid "File"
+msgstr ""
+
+#: forms/modelforms/editnamespace.py:54 forms/modelforms/newnamespace.py:39
+msgid "Format"
+msgstr ""
+
+#: models/modelo.py:45
+msgid "Visible"
+msgstr ""
+
+#: models/modelo.py:46
+msgid "Private"
+msgstr ""
+
+#: models/namespace.py:46
+msgid "Only alphanumeric characters are allowed."
+msgstr ""
+
+#: templates/easydata/index.html:38
+#: templates/easydata/information/entidades.html:7
+#: templates/easydata/information/login.html:7
+#: templates/easydata/information/modelos.html:7
+#: templates/easydata/information/templates.html:7
+#: templates/easydata/information/welcome.html:7
+#: templates/easydata/map/d2rq.html:7
+#: templates/easydata/map/mapeaFields.html:168
+#: templates/easydata/map/mapeaModelo.html:80
+#: templates/easydata/modelo/select_app.html:7
+#: templates/easydata/modelo/visibility.html:19
+#: templates/easydata/namespace/edit.html:7
+#: templates/easydata/namespace/list.html:7
+#: templates/easydata/namespace/new.html:7
+msgid "Home"
+msgstr ""
+
+#: templates/easydata/index.html:39
+#: templates/easydata/information/entidades.html:8
+#: templates/easydata/information/entidades.html:40
+#: templates/easydata/information/login.html:8
+#: templates/easydata/information/modelos.html:8
+#: templates/easydata/information/templates.html:8
+#: templates/easydata/information/welcome.html:8
+#: templates/easydata/map/d2rq.html:8
+#: templates/easydata/map/mapeaFields.html:169
+#: templates/easydata/map/mapeaModelo.html:81
+#: templates/easydata/map/mapeaModelo.html:133
+#: templates/easydata/modelo/select_app.html:8
+#: templates/easydata/modelo/visibility.html:20
+#: templates/easydata/namespace/edit.html:8
+#: templates/easydata/namespace/list.html:8
+#: templates/easydata/namespace/new.html:8
+msgid "Namespace"
+msgstr ""
+
+#: templates/easydata/index.html:40
+#: templates/easydata/information/entidades.html:9
+#: templates/easydata/information/login.html:9
+#: templates/easydata/information/modelos.html:9
+#: templates/easydata/information/templates.html:9
+#: templates/easydata/information/welcome.html:9
+#: templates/easydata/map/d2rq.html:9
+#: templates/easydata/map/mapeaFields.html:170
+#: templates/easydata/map/mapeaModelo.html:82
+#: templates/easydata/modelo/select_app.html:9
+#: templates/easydata/modelo/visibility.html:21
+#: templates/easydata/namespace/edit.html:9
+#: templates/easydata/namespace/list.html:9
+#: templates/easydata/namespace/new.html:9
+msgid "Visibility"
+msgstr ""
+
+#: templates/easydata/index.html:42
+#: templates/easydata/information/entidades.html:11
+#: templates/easydata/information/login.html:11
+#: templates/easydata/information/modelos.html:11
+#: templates/easydata/information/templates.html:11
+#: templates/easydata/information/welcome.html:11
+#: templates/easydata/map/d2rq.html:11
+#: templates/easydata/map/mapeaFields.html:172
+#: templates/easydata/map/mapeaModelo.html:84
+#: templates/easydata/modelo/select_app.html:11
+#: templates/easydata/modelo/visibility.html:23
+#: templates/easydata/namespace/edit.html:11
+#: templates/easydata/namespace/list.html:11
+#: templates/easydata/namespace/new.html:11
+msgid "Mapping"
+msgstr ""
+
+#: templates/easydata/index.html:46
+#: templates/easydata/information/entidades.html:15
+#: templates/easydata/information/login.html:15
+#: templates/easydata/information/modelos.html:15
+#: templates/easydata/information/templates.html:15
+#: templates/easydata/information/welcome.html:15
+#: templates/easydata/map/d2rq.html:15
+#: templates/easydata/map/mapeaFields.html:176
+#: templates/easydata/map/mapeaModelo.html:88
+#: templates/easydata/modelo/select_app.html:15
+#: templates/easydata/modelo/visibility.html:27
+#: templates/easydata/namespace/edit.html:15
+#: templates/easydata/namespace/list.html:15
+#: templates/easydata/namespace/new.html:15
+msgid "Configure Mapping"
+msgstr ""
+
+#: templates/easydata/index.html:47
+#: templates/easydata/information/entidades.html:16
+#: templates/easydata/information/login.html:16
+#: templates/easydata/information/modelos.html:16
+#: templates/easydata/information/templates.html:16
+#: templates/easydata/information/welcome.html:16
+#: templates/easydata/map/d2rq.html:16
+#: templates/easydata/map/mapeaFields.html:177
+#: templates/easydata/map/mapeaModelo.html:89
+#: templates/easydata/modelo/select_app.html:16
+#: templates/easydata/modelo/visibility.html:28
+#: templates/easydata/namespace/edit.html:16
+#: templates/easydata/namespace/list.html:16
+#: templates/easydata/namespace/new.html:16
+msgid "Generate Graph"
+msgstr ""
+
+#: templates/easydata/index.html:51
+#: templates/easydata/information/entidades.html:20
+#: templates/easydata/information/login.html:20
+#: templates/easydata/information/modelos.html:20
+#: templates/easydata/information/templates.html:20
+#: templates/easydata/information/welcome.html:20
+#: templates/easydata/map/d2rq.html:20
+#: templates/easydata/map/mapeaFields.html:181
+#: templates/easydata/map/mapeaModelo.html:93
+#: templates/easydata/modelo/select_app.html:20
+#: templates/easydata/modelo/visibility.html:32
+#: templates/easydata/namespace/edit.html:20
+#: templates/easydata/namespace/list.html:20
+#: templates/easydata/namespace/new.html:20
+msgid "Help"
+msgstr ""
+
+#: templates/easydata/index.html:55
+#: templates/easydata/information/entidades.html:24
+#: templates/easydata/information/login.html:24
+#: templates/easydata/information/modelos.html:24
+#: templates/easydata/information/modelos.html:32
+#: templates/easydata/information/templates.html:24
+#: templates/easydata/information/welcome.html:24
+#: templates/easydata/map/d2rq.html:24
+#: templates/easydata/map/mapeaFields.html:185
+#: templates/easydata/map/mapeaModelo.html:97
+#: templates/easydata/modelo/select_app.html:24
+#: templates/easydata/modelo/visibility.html:36
+#: templates/easydata/namespace/edit.html:24
+#: templates/easydata/namespace/list.html:24
+#: templates/easydata/namespace/new.html:24
+msgid "Configured Models"
+msgstr ""
+
+#: templates/easydata/index.html:56
+#: templates/easydata/information/entidades.html:25
+#: templates/easydata/information/entidades.html:32
+#: templates/easydata/information/login.html:25
+#: templates/easydata/information/modelos.html:25
+#: templates/easydata/information/templates.html:25
+#: templates/easydata/information/welcome.html:25
+#: templates/easydata/map/d2rq.html:25
+#: templates/easydata/map/mapeaFields.html:186
+#: templates/easydata/map/mapeaModelo.html:98
+#: templates/easydata/modelo/select_app.html:25
+#: templates/easydata/modelo/visibility.html:37
+#: templates/easydata/namespace/edit.html:25
+#: templates/easydata/namespace/list.html:25
+#: templates/easydata/namespace/new.html:25
+msgid "Related Entities"
+msgstr ""
+
+#: templates/easydata/index.html:57
+#: templates/easydata/information/entidades.html:26
+#: templates/easydata/information/login.html:26
+#: templates/easydata/information/modelos.html:26
+#: templates/easydata/information/templates.html:26
+#: templates/easydata/information/welcome.html:26
+#: templates/easydata/map/d2rq.html:26
+#: templates/easydata/map/mapeaFields.html:187
+#: templates/easydata/map/mapeaModelo.html:99
+#: templates/easydata/modelo/select_app.html:26
+#: templates/easydata/modelo/visibility.html:38
+#: templates/easydata/namespace/edit.html:26
+#: templates/easydata/namespace/list.html:26
+#: templates/easydata/namespace/new.html:26
+msgid "Use in templates"
+msgstr ""
+
+#: templates/easydata/index.html:72
+msgid "Change"
+msgstr ""
+
+#: templates/easydata/index.html:74
+msgid "Logged in as"
+msgstr ""
+
+#: templates/easydata/index.html:74
+msgid "Logout"
+msgstr ""
+
+#: templates/easydata/information/entidades.html:34
+msgid ""
+"Below you can see, a full list with all the entities that you have loaded "
+"into the EasyData/Django application and that you have mapped with any of "
+"your application's models. Also shows the URLs through you can access to the "
+"information about the models mapped with those entities."
+msgstr ""
+
+#: templates/easydata/information/entidades.html:39
+msgid "Entity"
+msgstr ""
+
+#: templates/easydata/information/entidades.html:41
+msgid "URL"
+msgstr ""
+
+#: templates/easydata/information/entidades.html:53
+msgid "There isn't any entity mapped with a model."
+msgstr ""
+
+#: templates/easydata/information/entidades.html:59
+#: templates/easydata/information/modelos.html:62
+#: templates/easydata/information/templates.html:62
+#: templates/easydata/information/templates.html:96
+msgid "Example"
+msgstr ""
+
+#: templates/easydata/information/entidades.html:62
+#, python-format
+msgid ""
+"Using the URLs provided before, if you would like to get all the information "
+"about the models that are related with the entity called %(nombre_entity)s "
+"in RDF/XML format, you will have to access to the following url:"
+msgstr ""
+
+#: templates/easydata/information/entidades.html:65
+msgid ""
+"There aren't entities related with models, and it's impossible show an "
+"example with real data. We will suppose that we have related models with an "
+"entity called Transport. The URL that we will have to access the get all the "
+"information about Transports in format RDF/Turtle is:"
+msgstr ""
+
+#: templates/easydata/information/login.html:42
+msgid "Log in"
+msgstr ""
+
+#: templates/easydata/information/login.html:61
+msgid "Sign in"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:33
+msgid ""
+"Below you can see a list of models which are available to use in your "
+"templates, or you can publish their associated URLs, to share their "
+"information. With the available models, appears information about the URLs "
+"assigned."
+msgstr ""
+
+#: templates/easydata/information/modelos.html:38
+#: templates/easydata/map/mapeaModelo.html:132
+#: templates/easydata/modelo/visibility.html:61
+msgid "Model"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:39
+msgid "Entity Mapped"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:40
+msgid "Single URL"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:41
+msgid "Full URL"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:46
+msgid "Mapped attributes:"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:46
+msgid "Mapped relations:"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:54
+msgid "There isn't any model full configured"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:60
+msgid ""
+"The word \"pk\" in bold in the Single URLs, represent the primary key of "
+"each entity of the model. You have to replace it by the entity's primary key "
+"that you want to publish the data."
+msgstr ""
+
+#: templates/easydata/information/modelos.html:64
+msgid ""
+"This section shows an example of how can you use the URLs showed before, to "
+"access to the model's information of a concrete model instance."
+msgstr ""
+
+#: templates/easydata/information/modelos.html:67
+#, python-format
+msgid ""
+"You have mapped the model %(nombre_model)s with the entity "
+"%(nombre_entidad)s. This model has an instance with the primary key "
+"\"%(primary)s\", and the url by which we can access to the information of "
+"this model instance is:"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:69
+msgid ""
+"A valid url to access to the information of all instances of the model, for "
+"example in RDF/Ntriples format is:"
+msgstr ""
+
+#: templates/easydata/information/modelos.html:72
+msgid ""
+"You don't have any model mapped with an entity, the models don't have data "
+"or the models are not visible, and is impossible to show you an example with "
+"real data. We suppose that exist a model called People, with an instance of "
+"People with the primary key \"1\", and this model is mapped with the entity "
+"Person. The url to access to the information of the People with the primary "
+"key \"1\" is:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:32
+msgid "Use in Django templates"
+msgstr ""
+
+#: templates/easydata/information/templates.html:34
+msgid ""
+"Using the URLs provided in the previous sections, the users can access to "
+"your information in RDF/XML, RDF/Ntriples and RDF/Turtle formats, but "
+"another way to publish your data, is including it into your html templates, "
+"using special tags that indicates the entities or properties, which "
+"represents your data."
+msgstr ""
+
+#: templates/easydata/information/templates.html:36
+msgid ""
+"The two available formats to do this, are microdata and rdfa. The EasyData/"
+"Django application, offers you multiple Django template tags, that can do "
+"this job easier for you. These template tags are differentiated by microdata "
+"and rdfa, and you only have to load the template tags in your Django "
+"templates using the following code:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:42
+msgid ""
+"When you have loaded the template tags libraries, you can use the template "
+"tags to generate the html with the data of a instance and the tags which are "
+"mapped the model. The available template tags are the following:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:46
+msgid ""
+"To publish all the data of a model instance in Microdata format, you have "
+"the following template tags:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:52
+#: templates/easydata/information/templates.html:86
+msgid ""
+"To publish data of a concrete field of the model instance you have the "
+"following template tags:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:58
+msgid ""
+"If you are going to publish a concrete field or fields of a model instance "
+"using microdata, you also have to use a specific template tag to include a "
+"html open tag with the instance information."
+msgstr ""
+
+#: templates/easydata/information/templates.html:64
+#: templates/easydata/information/templates.html:98
+#, python-format
+msgid ""
+"An example of the usage of the template tags showed before, if you want to "
+"publish in an unordered list, all the visible fields of a concrete instance "
+"of the model %(nombre_model)s stored in a variable called var1, you have to "
+"put the following template tag in your Django template:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:69
+#: templates/easydata/information/templates.html:103
+msgid "The output that will generate the last tag, is the following:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:74
+#: templates/easydata/information/templates.html:108
+#, python-format
+msgid ""
+"On the other hand, if you want to publish only one field of the var1 "
+"instance, like the <strong>%(nombre_field)s</strong> field, you have to do "
+"the following:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:80
+msgid ""
+"To publish all the data of a model instance in RDFa format, you have the "
+"following template tags:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:92
+msgid ""
+"If you are going to publish a concrete field or fields of a model instance "
+"using rdfa, you also have to use a specific template tag to include a html "
+"open tag with the instance information."
+msgstr ""
+
+#: templates/easydata/information/templates.html:112
+msgid "templates's directories"
+msgstr ""
+
+#: templates/easydata/information/templates.html:114
+msgid ""
+"Bellow you can see a list with all the directories where Django will search "
+"the templates, this means, that these are the directories where are located "
+"all the templates where you can use the template tags. The directories are "
+"the following:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:123
+msgid "There isn't any template directory."
+msgstr ""
+
+#: templates/easydata/information/templates.html:126
+msgid ""
+"The templates also can be stored in the application directories, always on "
+"the folder called templates, and in the subfolder with the same name of the "
+"application. The paths of each application installed in the Django project "
+"are:"
+msgstr ""
+
+#: templates/easydata/information/templates.html:135
+msgid "There isn't any application directory."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:32
+msgid "Welcome!"
+msgstr ""
+
+#: templates/easydata/information/welcome.html:33
+msgid ""
+"Welcome to the Django app, called EasyData/Django, which offers you a lot of "
+"possibilities to publish the data of your Django sites."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:35
+msgid ""
+"In this application, you could load multiple Namespaces (ontologies or "
+"vocabularies), that are defined using the rdf:Class, rdf:Property, owl:"
+"Class, owl:ObjectProperty, owl:DatatypeProperty and owl:AnnotationProperty "
+"tags, and after, you can construct the correspondence (mapping) among your "
+"models and these namespaces. By this way, the application could publish the "
+"data of your Django site, using this ontologies, in order that this data "
+"will be published and understandable by anyone."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:37
+msgid ""
+"The application also permits to the user, customize the visibility of the "
+"data, offering confidentiality to the sensible or important data that "
+"shouldn't be published."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:39
+msgid ""
+"When the application had been configured, you could publish you data, in "
+"many different ways and formats, like RDF/XML, RDF/Ntriples, RDF/Turtle, "
+"Microdata or RDFa."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:41
+msgid "Introduction"
+msgstr ""
+
+#: templates/easydata/information/welcome.html:43
+msgid ""
+"The first thing that you have to do, when you have installed EasyData/Django "
+"into your Django project, is to synchronize the models with the data base, "
+"in order to create the new tables that will store the data about models and "
+"namespaces. After this, you could run the loadmodels procedure through the "
+"manage.py file of your project, to discover the Django project's models and "
+"fields of all your applications. You can run the loadmodels procedure in a "
+"console on the path of your Django project, with the following command:"
+msgstr ""
+
+#: templates/easydata/information/welcome.html:47
+msgid ""
+"The next step will be the access to the web application, more specifically "
+"to the \"Namespace\" section, where the application shows all the namespaces "
+"loaded, and where you can add additional namespaces using RDF files with the "
+"specification. Initially, there will be not namespaces, so it will be the "
+"first task that you must to do. To add a new namespace, you have to push on "
+"the \"New Namespace\" button, and the application will show you a form, "
+"where you have to introduce the namespace's name and short name, and a file "
+"or uri with the namespace specification in one of the formats allowed."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:49
+msgid ""
+"When you have added at least one namespace, you must set the visibility of "
+"models and fields in the \"Visibility\" section, in order to avoid that "
+"certain data that shouldn't be published, can be published."
+msgstr ""
+
+#: templates/easydata/information/welcome.html:51
+msgid ""
+"The last step, will be to configure the mapping among the models and "
+"entities, and fields and properties, that you have loaded into the "
+"application. You can do this on the \"Mapping\" section. When you have "
+"mapped a model with a entity, will appear the \"Map fields\" button, where "
+"you can map the model's fields with the properties of the entities."
+msgstr ""
+
+#: templates/easydata/map/d2rq.html:32 templates/easydata/map/d2rq.html:51
+msgid "Configure D2Rq file"
+msgstr ""
+
+#: templates/easydata/map/d2rq.html:33
+msgid ""
+"This section, allows you to configure a D2Rq file with the mapping of your "
+"data base, generated with the d2rq generate-mapping application. The "
+"EasyData/Django application will add to your mapping file, the namespaces "
+"and tags that you are configured previously, in order to reuse this "
+"configuration."
+msgstr ""
+
+#: templates/easydata/map/d2rq.html:35
+msgid ""
+"To generate the mapping file, you have to follow the instructions given in "
+"the official documentation to <a href=\"http://d2rq.org/generate-mapping\" "
+"target=\"_blank\">generate mappings</a>. The command that you have to use, "
+"which is explained in detail in the documentation, is the following:"
+msgstr ""
+
+#: templates/easydata/map/d2rq.html:43
+msgid ""
+"Once you have generated the file, you only have to send it through the "
+"following form, and the EasyData/Django application, will return you the "
+"same file, with the configuration that you have made intro the application."
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:194
+msgid "Map Fields"
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:196
+msgid ""
+"As in the before section, here you are going to establish the "
+"correspondences, between your fields and the namespaces's properties loaded "
+"into the application."
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:198
+msgid ""
+"Below, you can see a form with one select field for each model field. The "
+"form's fields are differentiated by attributes and relations."
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:200
+msgid ""
+"The fields which are marked with an asterisk, means that these fields are "
+"declared as private. You can map the fields for future usages, but their "
+"information will not be published."
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:204
+msgid "Attributes"
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:217
+msgid "There isn't any attribute field to map."
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:223
+msgid "Relations"
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:236
+msgid "There isn't any relation field to map."
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:241
+#: templates/easydata/modelo/visibility.html:75
+#: templates/easydata/namespace/edit.html:79
+#: templates/easydata/namespace/new.html:84
+msgid "Back"
+msgstr ""
+
+#: templates/easydata/map/mapeaFields.html:242
+#: templates/easydata/map/mapeaModelo.html:123
+#: templates/easydata/map/mapeaModelo.html:154
+#: templates/easydata/modelo/visibility.html:52
+msgid "Save changes"
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:105
+msgid "Map Models"
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:107
+msgid ""
+"In this section, is where you are going to establish the correspondences, "
+"between your models and fields, and the namespaces loaded into the "
+"application. This process is know like \"Mapping\"."
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:109
+msgid ""
+"Below, you can see a form, with some tabs, for each application installed in "
+"your Django project. If you click in a tab, it shows you, all the "
+"application's models, and you can assign a concrete entity of the availables "
+"namespaces."
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:111
+msgid ""
+"Once you have mapped any model, and have saved the changes. The buttons "
+"\"Map fields\" of each models mapped, will be activated to start the model's "
+"field mapping."
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:113
+msgid ""
+"The models which are marked with an asterisk, means that these models are "
+"declared as private. You can map the models or their properties, but their "
+"information will not be published."
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:120
+msgid "There isn't any Model to map."
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:134
+msgid "Entities"
+msgstr ""
+
+#: templates/easydata/map/mapeaModelo.html:135
+#: templates/easydata/map/mapeaModelo.html:144
+msgid "Map fields"
+msgstr ""
+
+#: templates/easydata/modelo/select_app.html:32
+#: templates/easydata/modelo/visibility.html:44
+msgid "Visibility Configuration"
+msgstr ""
+
+#: templates/easydata/modelo/select_app.html:34
+msgid ""
+"In this section, you can configure the visibility of your models and fields "
+"which compose the models. This means, that you can choose which models or "
+"fields are going to be published, or which not. This is also a way to manage "
+"the security against sensible data, like passwords, telephones, or another "
+"type like these."
+msgstr ""
+
+#: templates/easydata/modelo/select_app.html:39
+msgid "Application"
+msgstr ""
+
+#: templates/easydata/modelo/select_app.html:40
+msgid "Number of Models"
+msgstr ""
+
+#: templates/easydata/modelo/select_app.html:41
+#: templates/easydata/modelo/select_app.html:49
+msgid "Configure visibility"
+msgstr ""
+
+#: templates/easydata/modelo/select_app.html:53
+msgid "Sorry, there are not applications loaded"
+msgstr ""
+
+#: templates/easydata/modelo/visibility.html:45
+msgid ""
+"Below you can see a list with all the application's models. To configure the "
+"visibility of a concrete models, you only have to pick in this models, to "
+"display a menu where you can choose the model's visibility and the "
+"visibility of each field of the model."
+msgstr ""
+
+#: templates/easydata/modelo/visibility.html:64
+msgid "Fields"
+msgstr ""
+
+#: templates/easydata/namespace/edit.html:32
+#: templates/easydata/namespace/list.html:40
+#: templates/easydata/namespace/list.html:48
+msgid "Edit Namespace"
+msgstr ""
+
+#: templates/easydata/namespace/edit.html:34
+#, python-format
+msgid ""
+"You are going to edit the existing %(nombre_name)s namespace. You can edit "
+"the namespace's name and short_name and if you want to update the namespace "
+"specification, you can provide a file with the namespace specification to "
+"add the new entities and properties and construct the new existing relations."
+msgstr ""
+
+#: templates/easydata/namespace/edit.html:53
+msgid "Update the entities and properties"
+msgstr ""
+
+#: templates/easydata/namespace/edit.html:80
+msgid "Edit namespace"
+msgstr ""
+
+#: templates/easydata/namespace/list.html:32
+msgid "List of Namespaces"
+msgstr ""
+
+#: templates/easydata/namespace/list.html:34
+msgid ""
+"Below you can see a full list with all your namespaces loaded into the "
+"application. In this section, you can add, edit or delete the namespaces. To "
+"add a new namespace, you have to provide the name, short name, and a file in "
+"the allowed formats with the specifications of the namespace. On the other "
+"hand, if you want to edit a namespace, you can change the name or short "
+"name, and optionaly update the namespace specification, providing a file "
+"with updated specification. Be careful before delete a namespace, because if "
+"you delete a namespace, all the configurations made using that namespace "
+"will be deleted and the changes can't be undone."
+msgstr ""
+
+#: templates/easydata/namespace/list.html:39
+msgid "Namespace Name"
+msgstr ""
+
+#: templates/easydata/namespace/list.html:41
+#: templates/easydata/namespace/list.html:49
+msgid "Delete Namespace"
+msgstr ""
+
+#: templates/easydata/namespace/list.html:49
+msgid "Are you sure that you want to delete the namespace?"
+msgstr ""
+
+#: templates/easydata/namespace/list.html:53
+msgid "Sorry, there are not nampesaces loaded"
+msgstr ""
+
+#: templates/easydata/namespace/list.html:58
+msgid "New Namespace"
+msgstr ""
+
+#: templates/easydata/namespace/new.html:32
+msgid "Create new namespace"
+msgstr ""
+
+#: templates/easydata/namespace/new.html:34
+msgid ""
+"You are going to create a new namespace. To do this, you have to provide the "
+"following data:"
+msgstr ""
+
+#: templates/easydata/namespace/new.html:37
+msgid ""
+"Namespace: is the name that you are going to use to identify the namespace "
+"into the application."
+msgstr ""
+
+#: templates/easydata/namespace/new.html:38
+msgid ""
+"Short name: is the name that will be used to identify the namespace in the "
+"data publication."
+msgstr ""
+
+#: templates/easydata/namespace/new.html:39
+msgid ""
+"File or URL: you have to provide a file or a URL (only one of this), where "
+"the application can load the namespace specification."
+msgstr ""
+
+#: templates/easydata/namespace/new.html:85
+msgid "Create Namespace"
+msgstr ""
+
+#: views/information.py:208 views/sesiones.py:50
+msgid "You have been logged out"
+msgstr ""
+
+#: views/information.py:211 views/sesiones.py:53
+msgid "You aren't logged in"
+msgstr ""
+
+#: views/map.py:92 views/modelo.py:90
+msgid "The changes were saved"
+msgstr ""
+
+#: views/map.py:94 views/map.py:308 views/modelo.py:92
+msgid "There were errors on the form"
+msgstr ""
+
+#: views/map.py:268
+msgid "The Model doesn't exists."
+msgstr ""
+
+#: views/map.py:272
+msgid "The Model is not mapped."
+msgstr ""
+
+#: views/map.py:306
+msgid "The fields were mapped successfully"
+msgstr ""
+
+#: views/namespace.py:92
+msgid "The namespace was created successfully."
+msgstr ""
+
+#: views/namespace.py:93 views/namespace.py:156
+msgid "The namespace has "
+msgstr ""
+
+#: views/namespace.py:95 views/namespace.py:158
+msgid " entities and "
+msgstr ""
+
+#: views/namespace.py:97 views/namespace.py:160
+msgid " properties"
+msgstr ""
+
+#: views/namespace.py:105
+msgid "There was an error, and the namespace couldn't be created"
+msgstr ""
+
+#: views/namespace.py:108
+msgid ""
+"There are errors in the form, please check it and send the form to create "
+"the namespace"
+msgstr ""
+
+#: views/namespace.py:155
+msgid "The namespace was updated successfully."
+msgstr ""
+
+#: views/namespace.py:166
+msgid "There was an error, and the namespace couldn't be updated"
+msgstr ""
+
+#: views/namespace.py:169
+msgid ""
+"There are errors in the form, please check it and send the form to update "
+"the namespace"
+msgstr ""
+
+#: views/namespace.py:206
+msgid "The namespace was deleted"
+msgstr ""
+
+#: views/sesiones.py:76
+msgid "You have to be a superuser to access to this section"
+msgstr ""

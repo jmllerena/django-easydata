@@ -1,0 +1,57 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Configure D2Rq file" %}</h2>
+    <p>{% blocktrans %}This section, allows you to configure a D2Rq file with the mapping of your data base, generated with the d2rq generate-mapping application. The EasyData/Django application will add to your mapping file, the namespaces and tags that you are configured previously, in order to reuse this configuration.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}To generate the mapping file, you have to follow the instructions given in the official documentation to <a href="http://d2rq.org/generate-mapping" target="_blank">generate mappings</a>. The command that you have to use, which is explained in detail in the documentation, is the following:{% endblocktrans %}</p>
+
+    <pre>generate-mapping [-u user] [-p password] [-d driver]
+        [-l script.sql] [--[skip-](schemas|tables|columns) list]
+        [--w3c] [-v] [-b baseURI] [-o outfile.ttl]
+        [--verbose] [--debug]
+        jdbcURL</pre>
+
+    <p>{% blocktrans %}Once you have generated the file, you only have to send it through the following form, and the EasyData/Django application, will return you the same file, with the configuration that you have made intro the application.{% endblocktrans %}</p>
+    <form role="form" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary btn-sm">{% trans "Configure D2Rq file" %}</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

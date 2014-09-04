@@ -1,0 +1,17 @@
+{% load easydata_rdfa %}
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+  {% for name in namespaces %}
+  {{ name.name }}="{{ name.url }}" 
+  {% endfor %}>
+  <div typeof="{{ tipo }}">
+    {% for attr in atributos %}
+    <span property="{{ attr.property }}">{{ attr.content }}</span>
+    {% endfor %}
+    {% for rel in relaciones %}
+    <span rel="{{ rel.rel }}">
+        {% rdfa_as_div_span_interno rel.instance rel.data %}
+    </span>
+    {% endfor %}
+  </div>
+</div>

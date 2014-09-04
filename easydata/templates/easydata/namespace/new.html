@@ -1,0 +1,91 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li class="active"><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Create new namespace" %}</h2>
+    <p>
+    {% blocktrans %}You are going to create a new namespace. To do this, you have to provide the following data:{% endblocktrans %}
+    </p>
+    <ul>
+        <li>{% blocktrans %}Namespace: is the name that you are going to use to identify the namespace into the application.{% endblocktrans %}</li>
+        <li>{% blocktrans %}Short name: is the name that will be used to identify the namespace in the data publication.{% endblocktrans %}</li>
+        <li>{% blocktrans %}File or URL: you have to provide a file or a URL (only one of this), where the application can load the namespace specification.{% endblocktrans %}</li>
+    </ul>
+
+    <form role="form" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 {% if form.namespace.errors %}has-error{% endif %}">
+                    <label for="id_namespace">{{ form.namespace.label }}</label>
+                    {{ form.namespace }}
+                    {% if form.namespace.errors %}<span class="help-block">{{ form.namespace.errors }}</span>{% endif %}
+                    </div>
+                    <div class="col-lg-6 {% if form.short_name.errors %}has-error{% endif %}">
+                    <label for="id_short_name">{{ form.short_name.label }}</label>
+                    {{ form.short_name }}
+                    {% if form.short_name.errors %}<span class="help-block">{{ form.short_name.errors }}</span>{% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-2 {% if form.formato.errors %}has-error{% endif %}">
+                    <label for="id_formato">{{ form.formato.label }}</label>
+                    {{ form.formato }}
+                    {% if form.formato.errors %}<span class="help-block">{{ form.formato.errors }}</span>{% endif %}
+                    </div>
+                    <div class="col-lg-10 {% if form.url.errors %}has-error{% endif %}">
+                    <label for="id_url">{{ form.url.label }}</label>
+                    {{ form.url }}
+                    {% if form.url.errors %}<span class="help-block">{{ form.url.errors }}</span>{% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <label for="id_archivo">{{ form.archivo.label }}</label>
+                    {{ form.archivo }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a type="submit" href="{% url "easydata.views.namespace.listado_namespaces" %}" class="btn btn-danger btn-sm">{% trans "Back" %}</a>
+                        <button type="submit" class="btn btn-primary btn-sm">{% trans "Create Namespace" %}</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,166 @@
+% ------------------------------------------------------------------------------
+% Este fichero es parte de la plantilla LaTeX para la realización de Proyectos
+% Final de Grado, protegido bajo los términos de la licencia GFDL.
+% Para más información, la licencia completa viene incluida en el
+% fichero fdl-1.3.tex
+
+% Copyright (C) 2012 SPI-FM. Universidad de Cádiz
+% ------------------------------------------------------------------------------
+
+En este último capítulo se detallan las lecciones aprendidas tras el desarrollo
+del presente proyecto y se identifican las posibles oportunidades de mejora
+sobre el software desarrollado.
+
+\section{Objetivos}
+
+A continuación, se recoge una valoración de los objetivos planteados
+inicialmente en la sección \ref{sec:objetivos} que debería de recoger el
+proyecto y los objetivos que se han alcanzado una vez finalizado el proyecto:
+\begin{itemize}
+    \item Se han implementado una serie de modelos de Django los cuales se
+        encargan de almacenar tanto la información de los distintos namespaces
+        cargados en la aplicación junto con las entidades y propiedades que
+        componen a estos, como la información acerca de los diferentes modelos
+        que componen a las aplicaciones del proyecto Django junto con los fields
+        de los mismos. De esta forma se satisface el primer subobjetivo
+        planteado en el objetivo \textbf{OBJ-001}.
+    \item Se ha desarrollado un script y agregado este al manage.py de Django,
+    	que se encarga de realizar la resolución de los distintos modelos que
+        componen al proyecto, así como los fields (atributos y relaciones) de
+        cada uno de estos. Con esto se satisface el segundo subobjetivo
+        planteado en el objetivo \textbf{OBJ-001}.
+    \item Además, el procedimiento anterior, también permite actualizar la
+        especificación de los modelos y sus fields una vez que estos ya han sido
+        cargados, cuando se realicen cambios en los mismos. Como por ejemplo,
+        que se agregue o elimine algún modelo o field. De esta forma, se amplía
+        la funcionalidad descrita por el objetivo \textbf{OBJ-001}.
+    \item Se ha desarrollado un apartado donde el usuario puede añadir nuevos
+        namespaces u ontologías a la aplicación. Además, dicho apartado también
+        permite eliminar los namespaces incluidos, y actualizar la
+        especificación de los mismos. De esta forma, se satisface el primer
+        subobjetivo del objetivo \textbf{OBJ-002}.
+    \item Se ha desarrollado otro apartado donde se permite al usuario realizar
+        la correspondencia entre los distintos modelos y fields de nuestro
+        proyecto, con los diferentes vocabularios que se han cargado en la
+        aplicación. De esta forma se satisface los subobjetivos segundo y
+        tercero del objetivo \textbf{OBJ-002}.
+    \item También se ha desarrollado un apartado donde el usuario puede realizar
+    	la configuración de la visibilidad de cada uno de los modelos y fields
+    	que existen en el proyecto Django, de forma que no se permita publicar
+        información no deseada. Con esto se satisface el cuarto subobjetivo del
+        objetivo \textbf{OBJ-002}.
+    \item Se han creado además, dos nuevos apartados donde se puede generar un
+        fichero de configuración para utilizar con la plataforma D2Rq y también
+        permite descargar un gráfico con la configuración que se ha realizado
+        sobre los modelos de nuestro proyecto. Con esto se mejora la
+        especificación del objetivo \textbf{OBJ-002}.
+    \item Se han desarrollado herramientas que permiten la publicación de los
+        datos de los modelos del proyecto Django, en multitud de formatos, como
+        pueden ser RDF/XML, RDF/Ntriples, RDF/Turtle, RDFa o Microdata, además
+        de herramientas para la generación de enlaces a los datos de las
+        instancias de los modelos e inserción de información en plantillas
+        Django. De esta forma, se satisface el objetivo \textbf{OBJ-003}.
+\end{itemize}
+
+% Este apartado debe resumir los objetivos generales y específicos alcanzados, relacionándolos con todo lo descrito en el capítulo de introducción.\\
+
+\section{Lecciones aprendidas}
+
+A continuación se detallan las buenas prácticas adquiridas, tanto tecnológicas
+como procedimentales. Por ello, podemos decir que a nivel tecnológico, se ha
+adquirido un mayor dominio y conocimiento del framework de desarrollo Django, de
+su funcionamiento interno y de las diferentes herramientas que este presta al
+usuario. Además, también se han obtenido nuevos conocimientos en tecnologías como
+SPARQL, D2Rq, RDF y web semántica. En general, al haber sido realizado todo bajo
+el lenguaje de programación Python, se ha obtenido un mayor dominio de este
+lenguaje, se han conocido nuevas librerías disponibles en el
+\textit{Python Package Index} y características que ofrece el lenguaje, como
+puede ser la introspección. Además, en el ámbito del desarrollo web, también he
+tenido que hacer uso de otras tecnologías, ya conocidas anteriormente, pero que
+me ha ayudado a ampliar mis conocimientos sobre ellas, así como el uso de otros
+frameworks, para el contenido tanto CSS como JavaScript.
+
+Además de todos los conocimientos tecnológicos adquiridos, también se han
+obtenido buenas prácticas a la hora de programar y organizar el trabajo. Esto se
+ha conseguido siguiendo la guía de estilos PEP8 y la herramienta PyLint a la
+hora de realizar la implementación del proyecto, lo cual es importante, ya que
+asegura que el código será mantenible y comprensible por cualquier usuario que
+esté habituado a trabajar siguiendo estas normas de estilo.
+
+También se han puesto en práctica los conocimientos adquiridos tanto en mis
+estudios de Ingeniería Técnica en Informática de Sistemas como en Ingeniería
+Informática, ya que estos me han sido necesarios para la elaboración del
+proyecto, tanto en el apartado de análisis y diseño de requisitos, prototipado,
+análisis de riesgos, como en el apartado de implementación, haciendo uso de las
+buenas prácticas adquiridas, como por ejemplo el uso de patrones de diseño.
+
+Por último, a nivel organizativo, se ha seguido una guía metodológica haciendo
+uso de un lenguaje de modelado de procesos, donde se describen y priorizan cada
+una de las etapas del proyecto. Se ha realizado un análisis y diseño del
+proyecto, así como una planificación de riesgos y temporal del proyecto. En
+dicho estudio temporal del proyecto, el cual se puede ver el resultado en el
+diagrama de Gantt del apartado de análisis (Figura \ref{fig:GanttInicial}), se
+le asignaba al proyecto una duración estimada de 12 meses, comenzado el
+desarrollo del mismo en Octubre de 2012, teniendo en cuenta que la dedicación al
+mismo no sería total y el resto de riesgos que pudiesen surgir. De esta forma,
+se ha aprendido la importancia de la gestión de los proyectos, de la estimación
+temporal y del esfuerzo de los mismos y de la realización de un análisis y
+diseño del mismo, de tal forma que se verá reflejado en una mejor administración
+de los recursos y cumplimiento de plazos.
+
+% Este apartado debe recoger una comparación cuantitativa del tiempo y el esfuerzo realmente invertido frente al estimado y planificado. Estos datos pueden recogerse del sistema de gestión de tareas empleado para el seguimiento del proyecto. Es mejor resumir cuantitativamente el tiempo y esfuerzo dedicados al proyecto a lo largo de su desarrollo y medido de esta forma que escribir un sencillo ``he trabajado mucho en este proyecto''.
+
+
+\section{Trabajo futuro}
+
+Una vez concluido el proyecto y obtenida la primera versión del software
+EasyData/Django, a raíz de la experiencia obtenida a lo largo del desarrollo del
+mismo, se han podido observar una serie de mejoras o ampliaciones, en cuya
+dirección podría ir orientado el trabajo futuro para la aplicación. Estas
+ampliaciones aportarían a la aplicación un mayor valor para el usuario,
+aumentando las funcionalidades de la misma.
+
+A continuación se muestra una lista de posibles mejoras en las que podría ir
+encaminado el trabajo futuro:
+\begin{itemize}
+    \item Posibilidad de poder realizar más de una configuración simultánea de
+        los modelos de la aplicación, con los namespaces cargados en la misma.
+        De este modo se ofrecería al usuario mayor versatilidad a la hora de
+        publicar sus datos en la web.
+    \item Incluir un endpoint de SPARQL propio, que funcione desde la misma
+    	aplicación de Django, que sustituya al fichero D2Rq que se genera
+    	actualmente, quedando todo integrado en la misma aplicación. De igual
+    	forma, si se desarrollase este módulo, se podría considerar la
+    	posibilidad de que no sólo pudiesen realizarse consultas, sino también
+        inserciones y modificaciones de los datos.
+    \item Ampliar los formatos de exportación de datos respecto de los que
+        pueden usarse actualmente (RDF, RDFa y Microdata), usando otros formatos
+        existentes como por ejemplo JSON-LD además de ampliar los existentes.
+    \item Ampliar la disponibilidad de la aplicación EasyData (actualmente
+        existente para Ruby on Rails y Django) a otros frameworks de desarrollo
+        web que sean ampliamente utilizados actualmente.
+\end{itemize}
+
+Si bien, todas las posibles mejoras no requieren un mismo esfuerzo, ya que
+mejoras como las de la creación de un módulo propio para la realización de
+consultas haciendo uso del lenguaje SPARQL es bastante ambicioso y complejo, el
+cual requiere de un gran trabajo, tanto de investigación como de desarrollo, ya
+que habría que estudiar primeramente como funciona el ORM de Django, para
+posteriormente adaptar las consultas SPARQL a este. Además, si se tratase la
+posibilidad de realizar inserciones y modificaciones en la base de datos, habría
+que gestionar de alguna forma los permisos de los usuarios para realizar las
+mismas.
+
+Por otro lado, mejoras como la exportación de la aplicación a otros frameworks
+de desarrollo web, habría que estudiar entre las posibilidades de realizar una
+nueva aplicación para el framework en concreto, o la posibilidad de adaptar la
+existente a cualquier framework. O al menos agrupar estos por lenguajes de
+programación, como por ejemplo, en el caso de Python, existen varios frameworks
+de desarrollo web además de Django, como puede ser Web2Py, Zope, etc... por lo
+que también se podría estudiar la posibilidad de desarrollar un paquete de Python
+que sirviese para la mayoría de los frameworks web de Python.
+
+% En esta sección, se presentan las diversas áreas u oportunidades de mejora detectadas durante el desarrollo del proyecto y que podrán ser abarcadas en futuras versiones del software.\\
+
+% Los elementos aquí descritos deben estar en relación con lo relatado en el apartado de objetivos y alcance del proyecto descritos en la introducción.\\
+

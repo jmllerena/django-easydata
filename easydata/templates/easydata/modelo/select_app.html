@@ -1,0 +1,58 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li class="active"><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+	<h2>{% trans "Visibility Configuration" %}</h2>
+
+    <p>{% blocktrans %}In this section, you can configure the visibility of your models and fields which compose the models. This means, that you can choose which models or fields are going to be published, or which not. This is also a way to manage the security against sensible data, like passwords, telephones, or another type like these.{% endblocktrans %}</p>
+    
+    <table class="table table-condensed">
+    	<thead>
+    		<tr>
+    			<th>{% trans "Application" %}</th>
+    			<th>{% trans "Number of Models" %}</th>
+    			<th>{% trans "Configure visibility" %}</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+	    {% for app in apps %}
+	    	<tr>
+	        	<th>{{ app.0 }}</th>
+                <td>{{ app.1 }}</td>
+                <td><a class="btn btn-primary btn-xs" href="{% url "easydata.views.modelo.configure_visibility_models" app.0 %}">{% trans "Configure visibility" %}</a></td>
+	        </tr>
+	    {% empty %}
+	    	<tr>
+	        	<td colspan="3">{% trans "Sorry, there are not applications loaded" %}</td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>
+    </table>
+{% endblock %}

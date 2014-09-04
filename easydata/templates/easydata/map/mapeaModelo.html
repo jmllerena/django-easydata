@@ -1,0 +1,173 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block extrahead %}
+<script language="javascript" type="text/javascript">
+function asigna_evento(campo)
+{
+    $(campo).change(
+    function()
+    {
+        var numeroField = $(this).attr("id");
+        numeroField = numeroField.replace("id_form-", "");
+        numeroField = numeroField.replace("-namespace", "");
+
+        //Eliminamos las opciones del select de entidad
+        $("#id_form-" + numeroField + "-entidad option").remove()
+        Opcion = document.createElement('option');
+        Opcion.value = "";
+        Opcion.appendChild(document.createTextNode("----------"));
+        $("#id_form-" + numeroField + "-entidad").append(Opcion);
+
+        if($(this).val() != "")
+        {
+            //Solicitamos por AJAX los Schemas del NameSpace
+            $.ajax(
+            {
+                url: '{% url "easydata.views.map.devuelve_entidades" %}',
+                async: false,
+                data: "namespace=" + $(this).val(),
+                dataType: 'json',
+                success: function (json)
+                {
+                    if (json['return'])
+                    {
+                        array = json['lista'];
+                        for(i = 0; i < array.length; i++){
+                            opcion = $("<option>");
+                            opcion.attr({ "value" : array[i][0], "title" : array[i][2]});
+                            opcion.text(array[i][1]);
+                            $("#id_form-" + numeroField + "-entidad").append(opcion);
+                        }
+                    }
+                }
+            });
+        }
+    })
+}
+
+function elimina_namespace(campo)
+{
+    numeroField = campo.replace("#id_form-", "");
+
+    numeroField = numeroField.replace("-entidad", "");
+
+    if($(campo).val() == "")
+    {
+        $('#id_form-' + numeroField + '-namespace option').removeAttr("selected");
+        $('#id_form-' + numeroField + '-namespace option[value=""]').attr('selected', 'selected');
+    }
+}
+
+$(document).ready(function()
+{
+    //re for the select of namespaces
+    var expr = /^id_form-\d+-namespace$/;
+    var expr2 = /^id_form-\d+-entidad$/;
+
+    //get all the selects of the document
+    var selects = $("select");
+
+    //iterate over the selects
+    for(var i = 0; i < selects.length; i++)
+    {
+        //if validate the test
+        if(expr.test(selects.eq(i).attr("id")))
+            asigna_evento("#" + selects.eq(i).attr("id")); //assing the event to the element
+        if(expr2.test(selects.eq(i).attr("id")))
+            elimina_namespace("#" + selects.eq(i).attr("id"));
+    }
+});
+
+$(function() {
+    $( "#mapeomodelos" ).accordion({
+        heightStyle: "content",
+        collapsible: true,
+        active: false
+    });
+});
+</script>
+{% endblock %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    <h2>{% trans "Map Models" %}</h2>
+
+    <p>{% blocktrans %}In this section, is where you are going to establish the correspondences, between your models and fields, and the namespaces loaded into the application. This process is know like "Mapping".{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}Below, you can see a form, with some tabs, for each application installed in your Django project. If you click in a tab, it shows you, all the application's models, and you can assign a concrete entity of the availables namespaces.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}Once you have mapped any model, and have saved the changes. The buttons "Map fields" of each models mapped, will be activated to start the model's field mapping.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}The models which are marked with an asterisk, means that these models are declared as private. You can map the models or their properties, but their information will not be published.{% endblocktrans %}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ management }}
+
+        {% if vacio %}
+        <p>{% trans "There isn't any Model to map." %}</p>
+        {% else %}
+        <div style="text-align : center" class="form-group">
+        <input type="submit" class="btn btn-primary btn-sm" value="{% trans "Save changes" %}" />
+        </div>
+
+        <div id="mapeomodelos" class="form-group">
+        {% for value in registro_forms %}
+            <h3>{{ value.0 }}</h3>
+            <div>
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <th>{% trans "Model" %}</th>
+                        <th>{% trans "Namespace" %}</th>
+                        <th>{% trans "Entities" %}</th>
+                        <th>{% trans "Map fields" %}</th>
+                    </thead>
+                    <tbody>
+                    {% for form in value.1 %}
+                        {{ form.id }}
+                        <tr {% if form.errors %}class="danger"{% endif %}>
+                            <th style="text-align: left;"><label>{%if form.instance.visibilidad == "P" %}*{% endif %}{{ form.instance.aplicacion }} / {{ form.instance.nombre }}</label></th>
+                            <td>{{ form.namespace.errors }}{{ form.namespace }}</td>
+                            <td>{{ form.entidad.errors }}{{ form.entidad }}</td>
+                            <td><a{% if not form.instance.entidad %}  disabled="disabled"{% endif %} class="btn btn-success btn-xs" href="{% url "easydata.views.map.mapea_fields" form.instance.id %}">{% trans "Map fields" %}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div style="text-align : center" class="form-group">
+        <input type="submit" class="btn btn-primary btn-sm" value="{% trans "Save changes" %}" />
+        </div>
+        {% endif %}
+    </form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "easydata/index.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block menu-superior %}
+<li><a href="{% url "easydata.views.information.welcome" %}">{% trans "Home" %}</a></li>
+<li><a href="{% url "easydata.views.namespace.listado_namespaces" %}">{% trans "Namespace" %}</a></li>
+<li><a href="{% url "easydata.views.modelo.select_visibility_app" %}">{% trans "Visibility" %}</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Mapping" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.map.mapea_modelo" %}">{% trans "Configure Mapping" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.map.create_configuration_graph" %}">{% trans "Generate Graph" %}</a></li>
+    </ul>
+</li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    {% trans "Help" %}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_models" %}">{% trans "Configured Models" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_entities" %}">{% trans "Related Entities" %}</a></li>
+        <li class="dropdown"><a href="{% url "easydata.views.information.info_templatetags" %}">{% trans "Use in templates" %}</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block contenido-plantilla %}
+    
+    {% if form.non_field_errors %}
+        <div class="alert alert-warning">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    <div style="margin : auto; width : 400px;">
+    <h2>{% trans "Log in" %}</h2>
+    <form method="POST" class="form-horizontal" role="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="inputEmail1" class="col-lg-4 control-label">{{ form.username.label }}</label>
+            <div class="col-lg-8">
+              <input  autocomplete="off" type="text" class="form-control" id="id_username" name="username" placeholder="{{ form.username.label }}">
+              {% if form.username.errors %}<p class="help-block">{{ form.username.errors }}</p>{% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword1" class="col-lg-4 control-label">{{ form.password.label }}</label>
+            <div class="col-lg-8">
+              <input type="password" class="form-control" id="id_password" name="password" placeholder="{{ form.password.label }}">
+              {% if form.password.errors %}<p class="help-block">{{ form.password.errors }}</p>{% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-offset-4 col-lg-8">
+              <button type="submit" class="btn btn-primary btn-sm btn-default">{% trans "Sign in" %}</button>
+            </div>
+          </div>
+    </form>
+    </div>
+{% endblock %}

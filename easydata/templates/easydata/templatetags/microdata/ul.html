@@ -1,0 +1,12 @@
+{% load easydata_microdata %}
+
+<ul itemscope itemtype="{{ tipo }}">
+{% for attr in atributos %}
+    <li itemprop="{{ attr.nombre }}"> {{ attr.valor }} </li>
+{% endfor %}
+{% for rel in relaciones %}
+    <li itemtype="{{ rel.itemtype }}" itemscope itemprop="{{ rel.itemprop }}"><ul>
+        {% microdata_as_ul_interno rel.instance rel.data %}
+    </ul></li>
+{% endfor %}
+</ul>

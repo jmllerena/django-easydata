@@ -1,0 +1,20 @@
+{% load easydata_rdfa %}
+
+<ul typeof="{{ tipo }}" {% if namespaces %}xmlns="http://www.w3.org/1999/xhtml"
+    {% for name in namespaces %}
+    {{ name.name }}="{{ name.url }}" 
+    {% endfor %}
+    {% endif %}>
+    {% for attr in atributos %}
+    <li property="{{ attr.property }}">{{ attr.content }}</li>
+    {% endfor %}
+    {% for rel in relaciones %}
+    {% if rel.created %}
+    <div rel="{{ rel.rel }}" resource="{{ rel.resource }}"></div>
+    {% else %}
+    <li rel="{{ rel.rel }}">
+        {% rdfa_as_ul_interno rel.instance rel.data %}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
